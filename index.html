@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to UCE</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            opacity: 0; /* Initially hide content */
+            transition: opacity 0.5s ease;
+        }
+
+        .popup {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            display: none; /* Initially hidden until popup disappears */
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .btn-get-started {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #2ecc71, #3498db);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .btn-get-started:hover {
+            background: linear-gradient(135deg, #27ae60, #2980b9);
+        }
+    </style>
+</head>
+<body>
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <p>Hello 🤗 frenz</p>
+            <p>You have come a long way.</p>
+            <p>But don't worry, we got you covered.</p>
+        </div>
+    </div>
+
+    <div class="container" id="mainContent">
+        <h1>Hello, Welcome Back!</h1>
+        <p>You are on your way to breaking through financial crisis.</p>
+        <p>You have all the tasks to grab all the SMG coins.</p>
+        <p>Hurry up and convert your coins to your desired currency!</p>
+        <a href="signup.html" class="btn-get-started">GET STARTED</a>
+    </div>
+
+    <script>
+        // Show the popup and then hide it after 4 seconds
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('popup').style.display = 'none'; // Hide popup
+                document.getElementById('mainContent').style.display = 'block'; // Show main content
+                document.body.style.opacity = 1; // Fade in effect for content
+            }, 4000);
+        };
+    </script>
+</body>
+  </html>
