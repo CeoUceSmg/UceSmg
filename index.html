@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCE - Break Financial Crisis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .popup {
+            background-color: #fff;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .popup button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .popup button:hover {
+            background-color: #45a049;
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+        }
+        h2 {
+            color: #333;
+        }
+        .signup-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .signup-container button {
+            padding: 12px;
+            background-color: #0288d1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .signup-container button:hover {
+            background-color: #0277bd;
+        }
+        .terms {
+            margin-top: 10px;
+        }
+        .terms a {
+            color: #0288d1;
+        }
+        .request-code a {
+            color: #0288d1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="logo.png" alt="App Logo" class="logo">
+        <div class="popup">
+            <h2>Hello, Welcome to UCE</h2>
+            <p>You are on your way to breaking through the financial crisis. Don't give up yet!</p>
+            <button onclick="redirectToSignUp()">Thanks</button>
+        </div>
+    </div>
+
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form id="signUpForm">
+            <input type="text" id="name" placeholder="Full Name" required><br>
+            <input type="text" id="username" placeholder="Username" required><br>
+            <input type="password" id="password" placeholder="Password" required><br>
+            <input type="email" id="email" placeholder="Email" required><br>
+            <input type="tel" id="phone" placeholder="Phone Number" required><br>
+            <label for="registrationCode">Registration Code</label><br>
+            <input type="text" id="registrationCode" placeholder="Enter Registration Code" required><br>
+            <p>The code is required for account registration. Registering code is required for account creation.</p>
+
+            <label class="terms">
+                <input type="checkbox" required> I agree to the <a href="terms.html" target="_blank">Terms & Conditions</a>
+            </label><br>
+
+            <p class="request-code">
+                <a href="https://wa.me/2349049307270" target="_blank">Request Registration Code</a>
+            </p>
+
+            <button type="submit" onclick="verifyCode()">Verify Code</button>
+        </form>
+    </div>
+
+    <script>
+        const registrationCodes = [
+            "UCE8G4JL9WP7M", "UCE4S5E4R3L2I", "UCEG7H6J5K4M3", "UCE9C8X7A6S5E", 
+            "UCE1N0BQV9C8X", "UCE3K2D1N0BQV", "UCEA6S5E4R3L2", "UCE9F8G7H6J5K",
+            "UCE2V1U0Y9F8G", "UCE5T3K2D1N0B", "UCEJ5K4M3W2V1", "UCE8X7A6S5E4R"
+        ];
+
+        function redirectToSignUp() {
+            document.querySelector('.container').style.display = 'none';
+            document.querySelector('.signup-container').style.display = 'block';
+        }
+
+        function verifyCode() {
+            const code = document.getElementById('registrationCode').value;
+            if (registrationCodes.includes(code)) {
+                window.location.href = 'login.html';  // Redirect to login page
+            } else {
+                alert('Invalid Registration Code. Please enter a valid code.');
+            }
+        }
+    </script>
+
+</body>
+</html>
