@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCE.SMG - Welcome</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom right, #4facfe, #00f2fe);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        /* Pop-up message styling */
+        #popupMessage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            width: 350px;
+        }
+
+        #popupMessage h2 {
+            color: #2f2f2f;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        #popupMessage p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .popup-btn {
+            background-color: #f54b64;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .popup-btn:hover {
+            background-color: #d43b50;
+        }
+
+        /* Main content styling (hidden until pop-up is closed) */
+        #mainContent {
+            display: none;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        #mainContent h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        #mainContent p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .continue-btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .continue-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .learn-more {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Pop-up message -->
+    <div id="popupMessage">
+        <h2>Hello! Welcome!</h2>
+        <p>You are on your way to breakthrough financial crisis. Don't give up yet.</p>
+        <button class="popup-btn" onclick="closePopup()">Thanks</button>
+    </div>
+
+    <!-- Main content (hidden initially) -->
+    <div id="mainContent">
+        <h1>Welcome to UCE.SMG</h1>
+        <p>Your number one gateway to unlock in-game rewards.</p>
+        <p>Now, your in-game rewards can be converted to cash and can also be used to pay workers.</p>
+        <div class="learn-more">
+            <a href="sign_up.htm"><button class="continue-btn">Continue</button></a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to close the pop-up and show the main content
+    function closePopup() {
+        document.getElementById("popupMessage").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
