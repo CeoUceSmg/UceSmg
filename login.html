@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SMG</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+            position: relative;
+        }
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        .button.verify {
+            background-color: green;
+            color: white;
+        }
+        .button.login {
+            background-color: blue;
+            color: white;
+        }
+        .button.signup {
+            background-color: red;
+            color: white;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .button.signup:hover {
+            background-color: darkred;
+        }
+        .button.login[disabled] {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+        .bottom-text {
+            margin-top: 20px;
+        }
+        .bottom-text a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .bottom-text a:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome Back SMG</h1>
+
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="password" id="password" placeholder="Password" required>
+
+            <button type="button" class="button verify" onclick="verifyDetails()">Verify</button>
+            <button type="submit" class="button login" onclick="login()" disabled>Login</button>
+
+            <p class="error-message" id="error-message"></p>
+        </form>
+
+        <button class="button signup" onclick="window.location.href='signup.html'">Sign Up</button>
+
+        <div class="bottom-text">
+            <a href="forget.html">Forget Password?</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function verifyDetails() {
+            // Simulated verification logic
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === "testuser" && password === "testpassword") {
+                document.getElementById('error-message').textContent = "Good";
+                document.querySelector('.button.login').disabled = false;
+            } else {
+                document.getElementById('error-message').textContent = "NO COMMAND. Please check your details.";
+                document.querySelector('.button.login').disabled = true;
+            }
+        }
+
+        function login() {
+            alert('Farewell SMGEES');
+            window.location.href = 'homepage.html';
+        }
+    </script>
+
+</body>
+  </html>
