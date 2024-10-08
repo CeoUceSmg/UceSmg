@@ -123,7 +123,31 @@
             alert('Farewell SMGEES');
             window.location.href = 'homepage.html';
         }
-    </script>
+    <script>
+    function verifyLogin() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Check if the username and password match what's in the database
+        fetch('database.html')
+            .then(response => response.json())
+            .then(data => {
+                const userFound = data.find(user => user.username === username && user.password === password);
+
+                if (userFound) {
+                    alert("Login successful! Farewell SMGEES");
+                    // Redirect to homepage or perform another action after successful login
+                    window.location.href = 'homepage.html';
+                } else {
+                    alert("NO COMMAND. Please check your details.");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("An error occurred. Please try again.");
+            });
+    }
+</script>
 
 </body>
   </html>
