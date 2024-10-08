@@ -108,5 +108,33 @@
             window.location.href = 'login.html';
         }
     <script src="script.js"></script>
+    <script>
+    function verifyAndStoreDetails() {
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm_password').value;
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return;
+        }
+
+        // Store user details in local storage
+        const userDetails = {
+            name: document.getElementById('name').value,
+            username: document.getElementById('username').value,
+            password: password,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+        };
+
+        localStorage.setItem('userDetails', JSON.stringify(userDetails));
+        alert("User details saved! You can now log in.");
+    }
+
+    function signUp() {
+        alert("Sign-up successful! Redirecting to login page.");
+        window.location.href = 'login.html';
+    }
+    </script>
 </body>
 </html>
