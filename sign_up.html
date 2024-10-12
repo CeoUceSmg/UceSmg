@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request to Sign Up Now</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Your existing styles */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Request to Sign Up Now</h1>
+        <p>Sign up to get started.</p>
+
+        <form id="signupForm">
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="text" id="username" placeholder="Username (Alphanumeric)" required>
+            <input type="password" id="password" placeholder="Password (Letters and Numbers)" required>
+            <input type="password" id="confirm_password" placeholder="Retype Password" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="tel" id="phone" placeholder="Phone Number" required>
+
+            <p>
+                <input type="checkbox" required> I Agree to the <span class="link" onclick="window.open('terms_and_condition.htm', '_blank')">terms_and_condition.htm</span>
+            </p>
+
+            <button type="submit" class="button">Sign Up</button>
+        </form>
+
+        <div class="bottom-text">
+            <p>Already have an account? <a href="login.html">Login Now</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent default form submission
+            verifyAndStoreDetails(); // Call verification and storage function
+        });
+
+        function verifyAndStoreDetails() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            // Create an object to hold user details
+            const userDetails = {
+                name: document.getElementById('name').value,
+                username: document.getElementById('username').value,
+                password: password,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+            };
+
+            // Send user details to the server
+            fetch('/api/signup', {  // Ensure this matches your server endpoint
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userDetails), // Send data as JSON
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("User details saved! You can now log in.");
+                    window.location.href = 'login.html'; // Redirect to login
+                } else {
+                    alert("Error saving details: " + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("An error occurred. Please try again.");
+            });
+        }
+    </script>
+</body>
+              </html>
