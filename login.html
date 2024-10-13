@@ -6,49 +6,64 @@
     <title>Login - SMG</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* General Styling */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6c5ce7, #74b9ff);
+            margin: 0;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
         }
         .container {
             background-color: white;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
             width: 400px;
             text-align: center;
             position: relative;
         }
         h1 {
-            color: #4CAF50;
+            color: #00b894;
             margin-bottom: 20px;
+            font-weight: bold;
         }
-        input[type="text"], input[type="password"] {
+        input {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            border: 2px solid #dfe6e9;
+            border-radius: 8px;
+            transition: border-color 0.3s;
         }
+        input:focus {
+            border-color: #0984e3;
+            outline: none;
+        }
+
         .button {
-            padding: 10px 20px;
+            padding: 12px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 25px;
             cursor: pointer;
             margin: 10px 0;
+            width: 100%;
+            font-size: 16px;
+            transition: transform 0.3s;
         }
         .button.verify {
-            background-color: green;
+            background-color: #00cec9;
             color: white;
         }
         .button.login {
             background-color: blue;
             color: white;
+        }
+        .button.login[disabled] {
+            background-color: grey;
+            cursor: not-allowed;
         }
         .button.signup {
             background-color: red;
@@ -60,15 +75,11 @@
         .button.signup:hover {
             background-color: darkred;
         }
-        .button.login[disabled] {
-            background-color: grey;
-            cursor: not-allowed;
-        }
         .bottom-text {
-            margin-top: 20px;
+            margin-top: 15px;
         }
         .bottom-text a {
-            color: #4CAF50;
+            color: #00b894;
             text-decoration: none;
         }
         .bottom-text a:hover {
@@ -85,7 +96,7 @@
     <div class="container">
         <h1>Welcome Back SMG</h1>
 
-        <form id="loginForm">
+        <form id="loginForm" onsubmit="return false;">
             <input type="text" id="username" placeholder="Username" required>
             <input type="text" id="name" placeholder="Name" required>
             <input type="password" id="password" placeholder="Password" required>
@@ -96,58 +107,42 @@
             <p class="error-message" id="error-message"></p>
         </form>
 
-        <button class="button signup" onclick="window.location.href='signup.html'">Sign Up</button>
+        <button class="button signup" onclick="window.location.href='sign_up.html'">Sign Up</button>
 
         <div class="bottom-text">
             <a href="forget.html">Forget Password?</a>
         </div>
     </div>
 
-    <script src="script.js"></script>
     <script>
         function verifyDetails() {
-            // Simulated verification logic
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
 
-            if (username === "testuser" && password === "testpassword") {
-                document.getElementById('error-message').textContent = "Good";
+            const storedUser = JSON.parse(localStorage.getItem(username));
+
+            if (storedUser && storedUser.password === password) {
+                errorMessage.textContent = "Good";
                 document.querySelector('.button.login').disabled = false;
             } else {
-                document.getElementById('error-message').textContent = "NO COMMAND. Please check your details.";
+                errorMessage.textContent = "NO COMMAND. Please check your details.";
                 document.querySelector('.button.login').disabled = true;
             }
         }
 
         function login() {
-            alert('Farewell SMGEES');
-            window.location.href = 'homepage.html';
-        }
-    <script>
-    function verifyLogin() {
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
+            const username = document.getElementById('username').value;
+            const storedUser = JSON.parse(localStorage.getItem(username));
 
-        // Check if the username and password match what's in the database
-        fetch('database.html')
-            .then(response => response.json())
-            .then(data => {
-                const userFound = data.find(user => user.username === username && user.password === password);
-
-                if (userFound) {
-                    alert("Login successful! Farewell SMGEES");
-                    // Redirect to homepage or perform another action after successful login
-                    window.location.href = 'homepage.html';
-                } else {
-                    alert("NO COMMAND. Please check your details.");
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
+            if (storedUser) {
+                alert("Login successful! Redirecting to homepage...");
+                window.location.href = 'homepage.html';
+            } else {
                 alert("An error occurred. Please try again.");
-            });
-    }
-</script>
+            }
+        }
+    </script>
 
 </body>
-  </html>
+</html>
