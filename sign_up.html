@@ -6,15 +6,114 @@
     <title>Request to Sign Up Now</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Your existing styles */
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #74b9ff, #a29bfe);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h1 {
+            color: #0984e3;
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        p {
+            color: #636e72;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #dfe6e9;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            border-color: #0984e3;
+            outline: none;
+        }
+
+        .button {
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 15px;
+            transition: transform 0.3s, background 0.3s;
+        }
+        .button:hover {
+            background: linear-gradient(45deg, #00cec9, #00b894);
+            transform: scale(1.05);
+        }
+
+        .link {
+            color: #d63031;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .bottom-text {
+            margin-top: 15px;
+            color: #2d3436;
+            font-size: 14px;
+        }
+        .bottom-text a {
+            color: #0984e3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .bottom-text a:hover {
+            text-decoration: underline;
+        }
+
+        .success-message, .error-message {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            display: none;
+        }
+        .success-message {
+            color: #00b894;
+        }
+        .error-message {
+            color: #d63031;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Request to Sign Up Now</h1>
-        <p>Sign up to get started.</p>
+        <p>Sign up to get started with our platform.</p>
 
-        <form id="signupForm">
+        <form id="signupForm" onsubmit="return false;">
             <input type="text" id="name" placeholder="Full Name" required>
             <input type="text" id="username" placeholder="Username (Alphanumeric)" required>
             <input type="password" id="password" placeholder="Password (Letters and Numbers)" required>
@@ -23,10 +122,15 @@
             <input type="tel" id="phone" placeholder="Phone Number" required>
 
             <p>
-                <input type="checkbox" required> I Agree to the <span class="link" onclick="window.open('terms_and_condition.htm', '_blank')">terms_and_condition.htm</span>
+                <input type="checkbox" required> I Agree to the 
+                <span class="link" onclick="window.open('terms_and_condition.htm', '_blank')">terms and conditions</span>
             </p>
 
-            <button type="submit" class="button">Sign Up</button>
+            <div id="message" class="success-message">Details verified successfully!</div>
+            <div id="error" class="error-message">Error: User already exists.</div>
+
+            <button type="button" class="button" onclick="verifyDetails()">Verify</button>
+            <button type="button" class="button" onclick="signUp()">Sign Up</button>
         </form>
 
         <div class="bottom-text">
@@ -35,22 +139,32 @@
     </div>
 
     <script>
-        document.getElementById('signupForm').addEventListener('submit', function(event) {
-            event.preventDefault();  // Prevent default form submission
-            verifyAndStoreDetails(); // Call verification and storage function
-        });
+        function verifyDetails() {
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message');
+            const error = document.getElementById('error');
 
-        function verifyAndStoreDetails() {
+            const existingUser = JSON.parse(localStorage.getItem(username));
+
+            if (existingUser && existingUser.email === email) {
+                error.style.display = 'block';
+                message.style.display = 'none';
+            } else {
+                message.style.display = 'block';
+                error.style.display = 'none';
+            }
+        }
+
+        function signUp() {
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirm_password').value;
 
-            // Check if passwords match
             if (password !== confirmPassword) {
                 alert("Passwords do not match!");
                 return;
             }
 
-            // Create an object to hold user details
             const userDetails = {
                 name: document.getElementById('name').value,
                 username: document.getElementById('username').value,
@@ -59,28 +173,10 @@
                 phone: document.getElementById('phone').value,
             };
 
-            // Send user details to the server
-            fetch('/api/signup', {  // Ensure this matches your server endpoint
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(userDetails), // Send data as JSON
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert("User details saved! You can now log in.");
-                    window.location.href = 'login.html'; // Redirect to login
-                } else {
-                    alert("Error saving details: " + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert("An error occurred. Please try again.");
-            });
+            localStorage.setItem(userDetails.username, JSON.stringify(userDetails));
+            alert("Sign-up successful! Redirecting to login page.");
+            window.location.href = 'login.html';
         }
     </script>
 </body>
-              </html>
+    </html>
