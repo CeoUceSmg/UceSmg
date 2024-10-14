@@ -3,182 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UCE - Homepage</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            overflow-x: hidden;
-        }
-
-        #popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            display: none;
-            z-index: 1000;
-            text-align: center;
-        }
-
-        #popup h2 {
-            margin: 0 0 10px;
-        }
-
-        #popup button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #popup button:hover {
-            background-color: #45a049;
-        }
-
-        .nav-buttons {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            background-color: white;
-            padding: 10px 0;
-        }
-
-        .nav-button {
-            border: none;
-            outline: none;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: white;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .blue { background-color: #2196F3; }
-        .yellow { background-color: #FFC107; }
-        .pink { background-color: #E91E63; }
-        .red-square {
-            background-color: #F44336;
-            border-radius: 8px;
-            width: 70px;
-        }
-
-        #submenu {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: none;
-            z-index: 1000;
-            color: white;
-        }
-
-        #submenu ul {
-            list-style-type: none;
-            padding: 20px;
-        }
-
-        #submenu ul li {
-            margin: 15px 0;
-            cursor: pointer;
-        }
-
-        #content {
-            padding: 20px;
-        }
-
-        .hidden { display: none; }
-    </style>
-    <script>
-        function showPopup() {
-            document.getElementById('popup').style.display = 'block';
-        }
-
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
-        }
-
-        function toggleSubmenu() {
-            const submenu = document.getElementById('submenu');
-            submenu.style.display = submenu.style.display === 'none' ? 'block' : 'none';
-        }
-
-        function showSection(section) {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(sec => sec.classList.add('hidden'));
-            document.getElementById(section).classList.remove('hidden');
-        }
-    </script>
+    <title>Home Page - UCE</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
-<body onload="showPopup()">
+<body>
+    <!-- Logo Section -->
+    <header>
+        <div class="logo">
+            <h1>UCE</h1>
+        </div>
+    </header>
 
-    <!-- Popup Welcome Message -->
-    <div id="popup">
-        <h2>Hello, Welcome to UCE</h2>
-        <p>You are on your way to break through financial crisis. Don't give up yet!</p>
+    <!-- Welcome Popup -->
+    <div id="welcome-popup" class="popup">
+        <p>Hello! Welcome to UCE. You're on your way to breaking through financial crises. Don't give up yet.</p>
         <button onclick="closePopup()">Thanks</button>
     </div>
 
-    <!-- Submenu -->
-    <div id="submenu">
-        <ul>
-            <li onclick="alert('Terms & Conditions')">Terms & Conditions</li>
-            <li onclick="alert('See Updates')">See Updates</li>
-            <li onclick="alert('Notifications')">Notifications</li>
-            <li onclick="alert('Chat')">Chat</li>
-            <li onclick="alert('Promote')">Promote</li>
-        </ul>
-    </div>
-
-    <!-- Dynamic Content Section -->
-    <div id="content">
-        <div id="home" class="section">
-            <h1>Home</h1>
-            <p>Welcome to UCE! Use the navigation below to explore various sections.</p>
-        </div>
-        <div id="news" class="section hidden">
-            <h1>News</h1>
-            <p>Stay updated with the latest news here.</p>
-        </div>
-        <div id="projects" class="section hidden">
-            <h1>Projects</h1>
-            <p>Explore our ongoing projects and opportunities to participate.</p>
-        </div>
-        <div id="smg" class="section hidden">
-            <h1>SMG</h1>
-            <p>Discover how SMG works and engage with the community.</p>
-        </div>
-        <div id="help" class="section hidden">
-            <h1>Help</h1>
-            <p>Need assistance? We're here to help.</p>
+    <!-- Submenu (3-dot menu) -->
+    <div class="submenu">
+        <span onclick="toggleSubmenu()">&#8942;</span>
+        <div id="submenu-content" class="submenu-content">
+            <a href="terms&conditions.html">Terms and Conditions</a>
         </div>
     </div>
 
-    <!-- Navigation Buttons -->
-    <div class="nav-buttons">
-        <button class="nav-button blue" onclick="showSection('news')">News</button>
-        <button class="nav-button blue" onclick="showSection('projects')">Projects</button>
-        <button class="nav-button yellow" onclick="showSection('smg')">SMG</button>
-        <button class="nav-button pink" onclick="showSection('help')">Help</button>
-        <button class="nav-button red-square" onclick="showSection('home')">Home</button>
-    </div>
+    <!-- Bottom Navigation -->
+    <footer>
+        <button class="circle blue" onclick="navigate('news.html')">News</button>
+        <button class="circle blue" onclick="navigate('project.html')">Projects</button>
+        <button class="circle yellow" onclick="navigate('SMG.html')">SMG</button>
+        <button class="circle pink" onclick="navigate('help.html')">Help</button>
+        <button class="square red" onclick="showHomePopup()">Home</button>
+    </footer>
 
+    <!-- Home Page Popup -->
+    <div id="home-popup" class="popup small">
+        <p>Congratulations! You are now on the home page. Don't give up yet.</p>
+    </div>
 </body>
-  </html>
+</html>
