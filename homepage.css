@@ -48,8 +48,8 @@ body {
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%; /* Ensures full height */
-    width: 100%; /* Ensures full width */
+    height: 100%; /* Ensures full height and cover the page full hight*/
+    width: 100%; /* Ensures full width and cover the page full width*/
     overflow: hidden; /* Prevents scrolling if needed */
 }
 
