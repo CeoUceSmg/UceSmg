@@ -8,7 +8,7 @@ function navigate(page) {
     window.location.href = page;
 }
 
-// Function to toggle submenu
+// Function to toggle the submenu
 function toggleSubmenu() {
     const submenu = document.getElementById('submenu-content');
     submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
