@@ -45,18 +45,19 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-/* Body Styling with Background Image */
+/* Apply background image styling */
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
     height: 100vh;
-    width: 100%;
-    background: url('homepage.jpg') no-repeat center center fixed;
-    background-size: cover; /* Ensures the image covers the entire page */
-    background-position: center;
-    background-attachment: fixed; /* Keeps the image in place when scrolling */
+    width: 100vw;
+    background-image: url('logo.jpg'); /* Replace with your correct image path */
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Ensures the background stays fixed during scroll */
 }
+
 
 @media (max-width: 768px) {
     body {
