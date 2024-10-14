@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page - UCE</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="homepage.css">
+    <script src="homepage.js" defer></script>
 </head>
 <body>
     <!-- Logo Section -->
@@ -13,35 +13,34 @@
         <div class="logo">
             <h1>UCE</h1>
         </div>
+
+        <!-- Submenu (Menu Icon) -->
+        <div class="submenu">
+            <img src="menu-icon.png" alt="Menu" onclick="toggleSubmenu()">
+            <div id="submenu-content" class="submenu-content" style="display: none;">
+                <a href="terms_and_conditions.html">Terms and Conditions</a>
+            </div>
+        </div>
     </header>
 
     <!-- Welcome Popup -->
-    <div id="welcome-popup" class="popup">
+    <div id="welcome-popup" class="popup" style="display: none;">
         <p>Hello! Welcome to UCE. You're on your way to breaking through financial crises. Don't give up yet.</p>
         <button onclick="closePopup()">Thanks</button>
     </div>
 
-    <!-- Submenu (3-dot menu) -->
-    <div class="submenu">
-        <span onclick="toggleSubmenu()">&#8942;</span>
-        <div id="submenu-content" class="submenu-content">
-            <a href="terms&conditions.html">Terms and Conditions</a>
-        </div>
-    </div>
-
     <!-- Bottom Navigation -->
     <footer>
-        <button class="circle blue" onclick="navigate('news.html')">News</button>
-        <button class="circle blue" onclick="navigate('project.html')">Projects</button>
-        <button class="circle yellow" onclick="navigate('SMG.html')">SMG</button>
-        <button class="circle pink" onclick="navigate('help.html')">Help</button>
-        <button class="square red" onclick="showHomePopup()">Home</button>
+        <button class="circle blue" onclick="navigate('news.html')" aria-label="News">News</button>
+        <button class="circle blue" onclick="navigate('project.html')" aria-label="Projects">Projects</button>
+        <button class="circle yellow" onclick="navigate('SMG.html')" aria-label="SMG">SMG</button>
+        <button class="circle pink" onclick="navigate('help.html')" aria-label="Help">Help</button>
+        <button class="square red" onclick="showHomePopup()" aria-label="Home">Home</button>
     </footer>
 
     <!-- Home Page Popup -->
-    <div id="home-popup" class="popup small">
+    <div id="home-popup" class="popup small" style="display: none;">
         <p>Congratulations! You are now on the home page. Don't give up yet.</p>
     </div>
-    <script src="homepage.js"></script>
 </body>
-</html>
+            </html>
