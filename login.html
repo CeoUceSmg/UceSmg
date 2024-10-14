@@ -42,7 +42,6 @@
             border-color: #0984e3;
             outline: none;
         }
-
         .button {
             padding: 12px 20px;
             border: none;
@@ -65,32 +64,25 @@
             background-color: grey;
             cursor: not-allowed;
         }
-        <!-- Sign Up Button -->
-<a href="sign_up.html" class="sign-up-button">Sign Up</a>
-
-<style>
-    /* Additional styles for the sign-up button */
-    .sign-up-button {
-        position: absolute; /* Allows positioning within the container */
-        top: 20px;         /* Adjust the vertical position */
-        right: 20px;       /* Adjust the horizontal position */
-        width: 50px;       /* Circle diameter */
-        height: 50px;      /* Circle diameter */
-        border-radius: 50%;/* Makes the button circular */
-        background-color: red; /* Button color */
-        color: white;      /* Text color */
-        display: flex;     /* Center content */
-        align-items: center; /* Center content vertically */
-        justify-content: center; /* Center content horizontally */
-        text-decoration: none; /* Remove underline from link */
-        font-weight: bold;  /* Bold text */
-        transition: background-color 0.3s; /* Smooth hover effect */
-    }
-
-    .sign-up-button:hover {
-        background-color: darkred; /* Darker shade on hover */
-    }
-</style>
+        /* Sign Up Button */
+        .sign-up-button {
+            position: absolute; /* Allows positioning within the container */
+            top: 20px;         /* Adjust the vertical position */
+            right: 20px;       /* Adjust the horizontal position */
+            width: 50px;       /* Circle diameter */
+            height: 50px;      /* Circle diameter */
+            border-radius: 50%;/* Makes the button circular */
+            background-color: red; /* Button color */
+            color: white;      /* Text color */
+            display: flex;     /* Center content */
+            align-items: center; /* Center content vertically */
+            justify-content: center; /* Center content horizontally */
+            text-decoration: none; /* Remove underline from link */
+            font-weight: bold;  /* Bold text */
+            transition: background-color 0.3s; /* Smooth hover effect */
+        }
+        .sign-up-button:hover {
+            background-color: darkred; /* Darker shade on hover */
         }
         .error-message {
             color: red;
@@ -114,11 +106,12 @@
             <p class="error-message" id="error-message"></p>
         </form>
 
-        <button class="button signup" onclick="window.location.href='sign_up.html'">Sign Up</button>
-
         <div class="bottom-text">
             <a href="forget.html">Forget Password?</a>
         </div>
+
+        <!-- New Sign Up Button -->
+        <a href="sign_up.html" class="sign-up-button">Sign Up</a>
     </div>
 
     <script>
@@ -130,7 +123,7 @@
             const storedUser = JSON.parse(localStorage.getItem(username));
 
             if (storedUser && storedUser.password === password) {
-                errorMessage.textContent = "Good";
+                errorMessage.textContent = "succeeded don't give up yet";
                 document.querySelector('.button.login').disabled = false;
             } else {
                 errorMessage.textContent = "NO COMMAND. Please check your details.";
