@@ -65,25 +65,32 @@
             background-color: grey;
             cursor: not-allowed;
         }
-        .button.signup {
-            background-color: red;
-            color: white;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-        .button.signup:hover {
-            background-color: darkred;
-        }
-        .bottom-text {
-            margin-top: 15px;
-        }
-        .bottom-text a {
-            color: #00b894;
-            text-decoration: none;
-        }
-        .bottom-text a:hover {
-            text-decoration: underline;
+        <!-- Sign Up Button -->
+<a href="sign_up.html" class="sign-up-button">Sign Up</a>
+
+<style>
+    /* Additional styles for the sign-up button */
+    .sign-up-button {
+        position: absolute; /* Allows positioning within the container */
+        top: 20px;         /* Adjust the vertical position */
+        right: 20px;       /* Adjust the horizontal position */
+        width: 50px;       /* Circle diameter */
+        height: 50px;      /* Circle diameter */
+        border-radius: 50%;/* Makes the button circular */
+        background-color: red; /* Button color */
+        color: white;      /* Text color */
+        display: flex;     /* Center content */
+        align-items: center; /* Center content vertically */
+        justify-content: center; /* Center content horizontally */
+        text-decoration: none; /* Remove underline from link */
+        font-weight: bold;  /* Bold text */
+        transition: background-color 0.3s; /* Smooth hover effect */
+    }
+
+    .sign-up-button:hover {
+        background-color: darkred; /* Darker shade on hover */
+    }
+</style>
         }
         .error-message {
             color: red;
