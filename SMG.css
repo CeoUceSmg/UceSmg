@@ -33,53 +33,43 @@ header p {
     padding: 30px;
 }
 
+/* Section Styling */
 .section {
     margin: 40px 0;
-    background-color: rgba(255, 255, 255, 0.9); /* White background for sections */
-    padding: 20px;
-    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.95); /* Light background */
+    padding: 30px;
+    border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
+/* Section Heading Styling */
 .section h2 {
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: #6c5ce7;
+    font-size: 42px;  /* Large, bold heading */
+    font-weight: 900; /* Extra bold */
+    color: black;     /* Black text for readability */
     text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase; /* Optional: Makes text uppercase */
+    letter-spacing: 1px; /* Adds a subtle spacing effect */
 }
 
+/* Section Description Styling */
 .section p {
-    font-size: 22px;
-    font-weight: 400;
-    line-height: 1.8;
+    font-size: 24px;  /* Slightly larger text for readability */
+    font-weight: 700; /* Bold description */
+    color: black;     /* Black text */
+    line-height: 1.8; /* Spaced-out lines for easy reading */
+    text-align: justify; /* Neatly align text */
     margin-bottom: 15px;
-}
-
-/* Subsection Styling */
-.subsection {
-    margin-top: 20px;
-}
-
-.subsection h3 {
-    font-size: 28px;
-    font-weight: 600;
-    margin-top: 10px;
-    color: #0984e3;
-}
-
-.subsection p {
-    font-size: 20px;
-    margin-bottom: 10px;
 }
 
 /* Image Styling */
 img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
+    width: 100%;      /* Full width of the section */
+    height: auto;     /* Maintain aspect ratio */
+    border-radius: 10px; /* Rounded corners for images */
     margin: 15px 0;
-}
+    }
 
 /* Footer Styling */
 footer {
