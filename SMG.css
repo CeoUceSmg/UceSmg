@@ -1,0 +1,106 @@
+/* General Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: url('homepage.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #2d3436;
+    overflow-y: scroll;
+}
+
+/* Header Styling */
+header {
+    text-align: center;
+    background-color: rgba(108, 92, 231, 0.8);
+    color: white;
+    padding: 30px;
+    border-bottom: 5px solid #dfe6e9;
+}
+
+header h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+/* Section Styling */
+.content {
+    padding: 30px;
+}
+
+.section {
+    margin: 40px 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #6c5ce7;
+    text-align: center;
+}
+
+.section p {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* Subsection Styling */
+.subsection h3 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #0984e3;
+}
+
+.subsection p {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Image Styling */
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+/* Footer Navigation Styling */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(52, 58, 64, 0.9);
+    padding: 15px;
+}
+
+footer button {
+    padding: 12px 25px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+footer button:hover {
+    background-color: #0056b3;
+}
