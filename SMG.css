@@ -3,73 +3,67 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: #007bff; /* Set solid blue background */
-    color: #ffffff; /* White text for better contrast */
+    background-color: #3498db; /* Main blue background */
+    color: black; /* Default black text for sections */
     overflow-y: scroll;
 }
 
 /* Header Styling */
 header {
     text-align: center;
-    background-color: rgba(108, 92, 231, 0.8);
-    color: brown;
+    background-color: #3498db; /* Main blue background */
+    color: white; /* White text for the main SMG heading */
     padding: 30px;
     border-bottom: 5px solid #dfe6e9;
 }
 
 header h1 {
-    font-size: 40px;
-    font-weight: 700;
+    font-size: 36px; /* Main heading size */
+    font-weight: 700; /* Bold text */
     margin-bottom: 10px;
 }
 
 header p {
     font-size: 20px;
-    line-height: 1.6;
-}
-
-/* Section Styling */
-.content {
-    padding: 30px;
+    font-weight: 500;
+    margin: 0; /* No extra spacing */
+    line-height: 1.4; /* Compact line spacing */
 }
 
 /* Section Styling */
 .section {
     margin: 40px 0;
     background-color: rgba(255, 255, 255, 0.95); /* Light background */
-    padding: 30px;
+    padding: 20px;
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 /* Section Heading Styling */
 .section h2 {
-    font-size: 42px;  /* large, bold heading */
-    font-weight: 900; /* Extra bold */
-    color: black;     /* Black text for readability */
+    font-size: 28px; /* Moderately large text */
+    font-weight: 600; /* Bold heading */
+    color: black; /* Black heading */
     text-align: center;
-    margin-bottom: 20px;
-    text-transform: uppercase; /* Optional: Makes text uppercase */
-    letter-spacing: 1px; /* Adds a subtle spacing effect */
+    margin-bottom: 10px;
 }
 
-/* Section Description Styling */
+/* Section Text Styling */
 .section p {
-    font-size: 24px;  /* Slightly normal text for readability */
-    font-weight: 700; /* Bold description */
-    color: black;     /* Black text */
-    line-height: normal; /* No Spaced-out lines for easy reading */
-    text-align: justify; /* Neatly align text */
-    margin-bottom: 15px;
+    font-size: 18px; /* Regular-sized text */
+    font-weight: 500; /* Simple bold text */
+    color: black; /* Black text */
+    margin: 0 0 15px 0; /* Compact spacing */
+    text-align: justify; /* Justified alignment */
 }
 
 /* Image Styling */
 img {
-    width: 100%;      /* Full width of the section */
-    height: auto;     /* Maintain aspect ratio */
-    border-radius: 10px; /* Rounded corners for images */
+    width: 100%; /* Full width of the section */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Rounded corners */
     margin: 15px 0;
-    }
+}
 
 /* Footer Styling */
 footer {
