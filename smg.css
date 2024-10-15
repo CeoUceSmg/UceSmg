@@ -3,9 +3,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background: url('homepage.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: #2d3436;
+    background-color: #007bff; /* Set solid blue background */
+    color: #ffffff; /* White text for better contrast */
     overflow-y: scroll;
 }
 
@@ -36,7 +35,7 @@ header p {
 
 .section {
     margin: 40px 0;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.9); /* White background for sections */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -58,6 +57,10 @@ header p {
 }
 
 /* Subsection Styling */
+.subsection {
+    margin-top: 20px;
+}
+
 .subsection h3 {
     font-size: 28px;
     font-weight: 600;
