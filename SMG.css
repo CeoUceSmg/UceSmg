@@ -81,7 +81,7 @@ img {
     margin: 15px 0;
 }
 
-/* Footer Navigation Styling */
+/* Footer Styling */
 footer {
     position: fixed;
     bottom: 0;
@@ -89,21 +89,45 @@ footer {
     display: flex;
     justify-content: space-around;
     background-color: rgba(52, 58, 64, 0.9);
-    padding: 15px;
+    padding: 20px 0;
 }
 
+/* General Button Styling */
 footer button {
-    padding: 12px 25px;
-    color: white;
-    background-color: #007bff;
+    width: 60px;
+    height: 60px;
     border: none;
-    border-radius: 20px;
+    border-radius: 50%; /* Circular shape */
     cursor: pointer;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
-    transition: background-color 0.3s;
+    text-align: center;
+    transition: transform 0.3s, background-color 0.3s;
 }
 
-footer button:hover {
-    background-color: #0056b3;
+/* Individual Colors for Buttons */
+footer .task {
+    background-color: red;
+    color: white;
 }
+footer .news {
+    background-color: green;
+    color: white;
+}
+footer .project {
+    background-color: #007bff; /* Default Blue */
+    color: white;
+}
+footer .help {
+    background-color: purple;
+    color: white;
+}
+footer .dashboard {
+    background-color: yellow;
+    color: black; /* Black text for contrast */
+}
+
+/* Hover Effects */
+footer button:hover {
+    transform: scale(1.1); /* Slight enlargement on hover */
+    }
