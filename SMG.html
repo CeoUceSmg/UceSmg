@@ -10,7 +10,7 @@
 
 <header>
     <h1>Welcome to SMG</h1>
-     <p>Your gateway to earning and learning.</p>
+     <p>Your gateway <span id="hidden-link">to</span> earning and learning.</p>
     <h2>WHAT WE OFFER</h1>
      
 </header>
@@ -92,6 +92,24 @@
     <button class="help" onclick="window.location.href='help.html'">Help</button>
     <button class="dashboard" onclick="window.location.href='dashboard.html'">Dashboard</button>
 </footer>
+    <script>
+  const hiddenLink = document.getElementById("hidden-link");
+  let holdTimer;
+
+  hiddenLink.addEventListener("mousedown", () => {
+    holdTimer = setTimeout(() => {
+      window.location.href = "admin.html";
+    }, 10000); // 10 seconds
+  });
+
+  hiddenLink.addEventListener("mouseup", () => {
+    clearTimeout(holdTimer); // Cancel if released before 10s
+  });
+
+  hiddenLink.addEventListener("mouseout", () => {
+    clearTimeout(holdTimer); // Cancel if mouse leaves the element
+  });
+    </script>
 
 </body>
 </html>
