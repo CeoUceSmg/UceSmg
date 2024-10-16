@@ -92,29 +92,32 @@
     <button class="help" onclick="window.location.href='help.html'">Help</button>
     <button class="dashboard" onclick="window.location.href='dashboard.html'">Dashboard</button>
 </footer>
-    const hiddenLink = document.getElementById("hidden-link");
-let holdTimer;
+    <script>
+  const hiddenLink = document.getElementById("hidden-link");
+  let holdTimer;
 
-hiddenLink.addEventListener("mousedown", (event) => {
-  event.preventDefault(); // Prevent default behavior (optional)
-  holdTimer = setTimeout(() => {
-    window.location.href = "admin.html";
-  }, 10000); // 10 seconds
-});
+  hiddenLink.addEventListener("mousedown", (event) => {
+    event.preventDefault(); // Prevent default behavior (optional)
+    holdTimer = setTimeout(() => {
+      window.location.href = "admin.html";
+    }, 10000); // 10 seconds
+  });
 
-hiddenLink.addEventListener("touchstart", (event) => {
-  event.preventDefault(); // For mobile compatibility
-  holdTimer = setTimeout(() => {
-    window.location.href = "admin.html";
-  }, 10000); // 10 seconds
-});
+  hiddenLink.addEventListener("touchstart", (event) => {
+    event.preventDefault(); // For mobile compatibility
+    holdTimer = setTimeout(() => {
+      window.location.href = "admin.html";
+    }, 10000); // 10 seconds
+  });
 
-hiddenLink.addEventListener("mouseup", clearHoldTimer);
-hiddenLink.addEventListener("touchend", clearHoldTimer);
-hiddenLink.addEventListener("mouseout", clearHoldTimer);
+  hiddenLink.addEventListener("mouseup", clearHoldTimer);
+  hiddenLink.addEventListener("touchend", clearHoldTimer);
+  hiddenLink.addEventListener("mouseout", clearHoldTimer);
 
-function clearHoldTimer() {
-  clearTimeout(holdTimer); // Cancel if action is interrupted
+  function clearHoldTimer() {
+    clearTimeout(holdTimer); // Cancel if action is interrupted
+  }
+    </script>
 }
 </body>
 </html>
