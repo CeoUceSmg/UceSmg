@@ -92,24 +92,29 @@
     <button class="help" onclick="window.location.href='help.html'">Help</button>
     <button class="dashboard" onclick="window.location.href='dashboard.html'">Dashboard</button>
 </footer>
-    <script>
-  const hiddenLink = document.getElementById("hidden-link");
-  let holdTimer;
+    const hiddenLink = document.getElementById("hidden-link");
+let holdTimer;
 
-  hiddenLink.addEventListener("mousedown", () => {
-    holdTimer = setTimeout(() => {
-      window.location.href = "admin.html";
-    }, 10000); // 10 seconds
-  });
+hiddenLink.addEventListener("mousedown", (event) => {
+  event.preventDefault(); // Prevent default behavior (optional)
+  holdTimer = setTimeout(() => {
+    window.location.href = "admin.html";
+  }, 10000); // 10 seconds
+});
 
-  hiddenLink.addEventListener("mouseup", () => {
-    clearTimeout(holdTimer); // Cancel if released before 10s
-  });
+hiddenLink.addEventListener("touchstart", (event) => {
+  event.preventDefault(); // For mobile compatibility
+  holdTimer = setTimeout(() => {
+    window.location.href = "admin.html";
+  }, 10000); // 10 seconds
+});
 
-  hiddenLink.addEventListener("mouseout", () => {
-    clearTimeout(holdTimer); // Cancel if mouse leaves the element
-  });
-    </script>
+hiddenLink.addEventListener("mouseup", clearHoldTimer);
+hiddenLink.addEventListener("touchend", clearHoldTimer);
+hiddenLink.addEventListener("mouseout", clearHoldTimer);
 
+function clearHoldTimer() {
+  clearTimeout(holdTimer); // Cancel if action is interrupted
+}
 </body>
 </html>
