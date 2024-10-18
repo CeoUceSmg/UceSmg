@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Notifications</title>
+    <link rel="stylesheet" href="tasknotification.css">
+</head>
+<body>
+    <header>
+        <h1>Task Notifications</h1>
+        <div class="toggle-buttons">
+            <button id="verified-btn" class="active">Verified 🔔 <span id="verified-count">0</span></button>
+            <button id="pending-btn">Pending 🔔 <span id="pending-count">0</span></button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Verified Section -->
+        <section id="verified-section" class="active">
+            <h2>Verified Tasks</h2>
+            <ul class="task-list" id="verified-tasks"></ul>
+            <div class="empty-message" id="verified-empty">
+                <span class="bell-icon">🔔</span> 
+                <span>Not yet</span>
+            </div>
+        </section>
+
+        <!-- Pending Section -->
+        <section id="pending-section">
+            <h2>Pending Tasks</h2>
+            <ul class="task-list" id="pending-tasks"></ul>
+            <div class="empty-message" id="pending-empty">
+                <span class="bell-icon">🔔</span> 
+                <span>Not yet</span>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <button onclick="window.location.href='usernotifications.html'">View Transactions</button>
+    </footer>
+
+    <script>
+        const verifiedBtn = document.getElementById('verified-btn');
+        const pendingBtn = document.getElementById('pending-btn');
+        const verifiedSection = document.getElementById('verified-section');
+        const pendingSection = document.getElementById('pending-section');
+        const verifiedTasks = document.getElementById('verified-tasks');
+        const pendingTasks = document.getElementById('pending-tasks');
+        const verifiedEmpty = document.getElementById('verified-empty');
+        const pendingEmpty = document.getElementById('pending-empty');
+        const verifiedCount = document.getElementById('verified-count');
+        const pendingCount = document.getElementById('pending-count');
+
+        // Example task data (replace with dynamic content from the server or database)
+        const verifiedTaskData = [
+            { description: 'Follow us on Facebook', status: 'Verified' },
+            { description: 'Share our Twitter post', status: 'Verified' }
+        ];
+
+        const pendingTaskData = [
+            { description: 'Like our Instagram photo', status: 'Pending' },
+            { description: 'Subscribe to our YouTube channel', status: 'Pending' }
+        ];
+
+        function renderTasks(taskList, tasks, emptyMessage, countElement) {
+            taskList.innerHTML = ''; // Clear previous tasks
+            if (tasks.length === 0) {
+                emptyMessage.style.display = 'flex';
+                countElement.textContent = '0';
+            } else {
+                emptyMessage.style.display = 'none';
+                tasks.forEach((task, index) => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<span>Task #${index + 1}: ${task.description}</span>
+                                    <span class="status ${task.status.toLowerCase()}">${task.status}</span>`;
+                    taskList.appendChild(li);
+                });
+                countElement.textContent = tasks.length;
+            }
+        }
+
+        // Toggle between Verified and Pending sections
+        verifiedBtn.addEventListener('click', () => showSection('verified'));
+        pendingBtn.addEventListener('click', () => showSection('pending'));
+
+        function showSection(section) {
+            if (section === 'verified') {
+                verifiedSection.classList.add('active');
+                pendingSection.classList.remove('active');
+                verifiedBtn.classList.add('active');
+                pendingBtn.classList.remove('active');
+            } else {
+                pendingSection.classList.add('active');
+                verifiedSection.classList.remove('active');
+                pendingBtn.classList.add('active');
+                verifiedBtn.classList.remove('active');
+            }
+        }
+
+        // Render tasks on page load
+        renderTasks(verifiedTasks, verifiedTaskData, verifiedEmpty, verifiedCount);
+        renderTasks(pendingTasks, pendingTaskData, pendingEmpty, pendingCount);
+    </script>
+</body>
+</html>
