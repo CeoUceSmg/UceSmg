@@ -21,9 +21,9 @@
 
 <!-- Fixed Footer -->
 <footer class="footer">
-    <button class="circular-btn" onclick="window.location.href='SMGtask.html'">SMG Task</button>
-    <button class="rectangular-btn" onclick="window.location.href='co-task.html'">CO-TASK</button>
-    <button class="rectangular-btn" onclick="window.location.href='sponsored.html'">Sponsored</button>
+    <button class="rectangular-btn smg-task" onclick="window.location.href='SMGtask.html'">SMG Task</button>
+    <button class="rectangular-btn co-task" onclick="window.location.href='co-task.html'">CO-TASK</button>
+    <button class="rectangular-btn sponsored-task" onclick="window.location.href='sponsored.html'">Sponsored</button>
 </footer>
 
 <script>
@@ -36,17 +36,6 @@
         notificationIcon.style.color = colors[colorIndex];
         colorIndex = (colorIndex + 1) % colors.length;
     }, 1000); // Changes color every second
-
-    // Button Lighting Animation (Passing effect across text)
-    const buttons = document.querySelectorAll("button");
-    buttons.forEach(button => {
-        button.addEventListener("mouseover", () => {
-            button.classList.add("lighting-effect");
-        });
-        button.addEventListener("mouseout", () => {
-            button.classList.remove("lighting-effect");
-        });
-    });
 </script>
 
 </body>
