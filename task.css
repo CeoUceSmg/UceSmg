@@ -29,42 +29,44 @@ body {
     padding: 10px;
 }
 
-/* Buttons */
-button {
-    border: none;
+/* Rectangular Buttons */
+.rectangular-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid white;
+    border-radius: 8px;
+    flex: 1;
+    margin: 0 10px;
     color: white;
+    font-size: 16px;
+    padding: 15px;
+    position: relative;
+    overflow: hidden;
     cursor: pointer;
-    padding: 10px;
     transition: transform 0.2s ease;
 }
 
-/* Circular Button */
-.circular-btn {
-    background-color: red;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    font-size: 12px;
-    text-align: center;
-    line-height: 40px;
+/* Button Lighting Animation */
+.rectangular-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 5px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    animation: move-light 2s linear infinite;
 }
 
-/* Rectangular Buttons */
-.rectangular-btn {
-    background-color: blue;
-    border-radius: 5px;
-    flex: 1;
-    margin: 0 10px;
-    font-size: 16px;
+@keyframes move-light {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
 }
 
-/* Lighting Animation */
-.lighting-effect {
-    animation: lighting 2s infinite;
-}
-
-@keyframes lighting {
-    0% { text-shadow: 0 0 5px white; }
-    50% { text-shadow: 0 0 20px white; }
-    100% { text-shadow: 0 0 5px white; }
-}
+/* Hover Effect */
+.rectangular-btn:hover {
+    transform: scale(1.05);
+    }
