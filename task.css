@@ -1,72 +1,96 @@
-/* General styling */
+/* Page Styling */
 body {
+    background-color: darkblue;
+    margin: 0;
     font-family: Arial, sans-serif;
+    overflow-y: scroll;
 }
 
 .content {
     padding: 20px;
+    text-align: center;
     color: white;
 }
 
-/* Notification Icon */
-#notification-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-/* Fixed Footer Styling */
+/* Fixed Footer */
 .footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 10px;
+    justify-content: space-around;
+    background-color: #333;
+    padding: 10px 0;
 }
 
-/* Rectangular Buttons */
+/* Rectangular Buttons with Animation */
 .rectangular-btn {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid white;
-    border-radius: 8px;
-    flex: 1;
-    margin: 0 10px;
+    border: none;
+    padding: 15px 20px;
     color: white;
-    font-size: 16px;
-    padding: 15px;
+    font-size: 18px;
+    cursor: pointer;
     position: relative;
     overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.2s ease;
+    text-align: center;
+    transition: background-color 0.3s;
 }
 
-/* Button Lighting Animation */
+/* Specific Button Colors */
+.smg-task {
+    background-color: red;
+}
+
+.co-task {
+    background-color: green;
+}
+
+.sponsored-task {
+    background-color: yellow;
+    color: black; /* For better contrast */
+}
+
+/* Lighting Animation on Buttons */
+@keyframes lighting-effect {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
 .rectangular-btn::before {
     content: "";
     position: absolute;
     top: 0;
     left: -100%;
-    width: 5px;
+    width: 3px;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
-    animation: move-light 2s linear infinite;
+    background-color: white;
+    animation: lighting-effect 2s linear infinite;
 }
 
-@keyframes move-light {
-    0% {
-        left: -100%;
-    }
-    100% {
-        left: 100%;
-    }
+/* Notification Icon Styles */
+#notification-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    animation: shake 1s infinite ease-in-out, color-change 1s infinite;
 }
 
-/* Hover Effect */
-.rectangular-btn:hover {
-    transform: scale(1.05);
+/* Shaking Notification Icon Animation */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(0); }
+    75% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
+
+/* Color-changing Animation for Notification Icon */
+@keyframes color-change {
+    0% { color: green; }
+    25% { color: red; }
+    50% { color: blue; }
+    75% { color: yellow; }
+    100% { color: orange; }
     }
