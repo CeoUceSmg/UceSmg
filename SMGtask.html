@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="smgtask.css">
+    <title>SMG Task Page</title>
+</head>
+<body>
+    <!-- Main Task List -->
+    <div class="task-list" id="main-page">
+        <h1>SMG Tasks</h1>
+
+        <div class="task-item" data-target="whatsapp-page">1. Follow WhatsApp</div>
+        <div class="task-item" data-target="facebook-page">2. Follow Facebook</div>
+        <div class="task-item" data-target="tiktok-page">3. Follow TikTok</div>
+        <div class="task-item" data-target="instagram-page">4. Follow Instagram</div>
+        <div class="task-item" data-target="youtube-page">5. Follow YouTube</div>
+    </div>
+
+    <!-- WhatsApp Task Page -->
+    <div class="task-page hidden" id="whatsapp-page">
+        <button class="back-btn">← Back</button>
+        <h2>WhatsApp Tasks</h2>
+
+        <p>Join our community and earn rewards:</p>
+
+        <div class="task-section">
+            <a href="https://chat.whatsapp.com/JpEkr5siL7NGTHjkma9ri1" class="join-link">Join + $SMG 200P</a>
+            <button class="submit-btn hidden" disabled>Submit Request</button>
+
+            <!-- Submit Request Fields -->
+            <div class="submit-fields hidden">
+                <label for="username">Social Username:</label>
+                <input type="text" id="username" placeholder="Enter your username">
+
+                <label for="task-receipt">Task Receipt (Upload Photo):</label>
+                <input type="file" id="task-receipt">
+
+                <div class="uploaded-file"></div>
+
+                <button class="final-submit-btn" disabled>Submit</button>
+                <button class="done-btn hidden">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const taskItems = document.querySelectorAll('.task-item');
+        const taskPages = document.querySelectorAll('.task-page');
+        const backButtons = document.querySelectorAll('.back-btn');
+        const joinLinks = document.querySelectorAll('.join-link');
+        const submitButtons = document.querySelectorAll('.submit-btn');
+        const finalSubmitButtons = document.querySelectorAll('.final-submit-btn');
+        const doneButtons = document.querySelectorAll('.done-btn');
+        const uploadFields = document.querySelectorAll('#task-receipt');
+        const uploadedFileDisplays = document.querySelectorAll('.uploaded-file');
+
+        // Handle Task List Navigation
+        taskItems.forEach(item => {
+            item.addEventListener('click', () => {
+                document.getElementById('main-page').classList.add('hidden');
+                const targetPage = document.getElementById(item.dataset.target);
+                targetPage.classList.remove('hidden');
+            });
+        });
+
+        backButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                document.getElementById('main-page').classList.remove('hidden');
+                taskPages.forEach(page => page.classList.add('hidden'));
+            });
+        });
+
+        // Enable Submit Button After 10 Seconds
+        joinLinks.forEach((link, index) => {
+            link.addEventListener('click', () => {
+                setTimeout(() => {
+                    submitButtons[index].classList.remove('hidden');
+                    submitButtons[index].disabled = false;
+                }, 10000);
+            });
+        });
+
+        // Display Submit Fields When Submit Button is Clicked
+        submitButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                button.nextElementSibling.classList.remove('hidden');
+            });
+        });
+
+        // Handle File Upload and Display Uploaded Filename
+        uploadFields.forEach((field, index) => {
+            field.addEventListener('change', (event) => {
+                const fileName = event.target.files[0].name;
+                uploadedFileDisplays[index].textContent = `Uploaded: ${fileName}`;
+                finalSubmitButtons[index].disabled = false;
+            });
+        });
+
+        // Handle Final Submission and Enable Done Button
+        finalSubmitButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                alert('Request submitted! Redirecting to request.html');
+                doneButtons[index].classList.remove('hidden');
+            });
+        });
+
+        // Mark Task as Done and Disable Future Attempts
+        doneButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                alert('Task marked as done.');
+                button.closest('.task-section').querySelector('.join-link').classList.add('hidden');
+                button.closest('.task-section').querySelector('.submit-btn').disabled = true;
+                button.closest('.submit-fields').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
