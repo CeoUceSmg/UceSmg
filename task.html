@@ -6,37 +6,31 @@
     <title>Tasks - SMG</title>
     <link rel="stylesheet" href="task.css">
 </head>
-<body style="margin: 0; background-color: darkblue; overflow-y: auto;">
+<body>
 
-<!-- Notification Icon -->
-<a href="tasknotification.html" id="notification-icon">
-    🔔
-</a>
+    <!-- Notification Icon -->
+    <div id="notification-icon" onclick="window.location.href='tasknotification.html'">
+        🔔
+    </div>
 
-<!-- Scrollable Content -->
-<div class="content">
-    <h1>Tasks</h1>
-    <p>Explore available tasks to start earning!</p>
-</div>
+    <!-- Page Content -->
+    <div class="content">
+        <h1>SMG Tasks</h1>
+        <p>Complete tasks to earn rewards and unlock new opportunities!</p>
+    </div>
 
-<!-- Fixed Footer -->
-<footer class="footer">
-    <button class="rectangular-btn smg-task" onclick="window.location.href='SMGtask.html'">SMG Task</button>
-    <button class="rectangular-btn co-task" onclick="window.location.href='co-task.html'">CO-TASK</button>
-    <button class="rectangular-btn sponsored-task" onclick="window.location.href='sponsored.html'">Sponsored</button>
-</footer>
-
-<script>
-    // Notification Icon Animation: Color-changing effect
-    const notificationIcon = document.getElementById("notification-icon");
-    const colors = ["green", "red", "blue", "yellow", "orange"];
-    let colorIndex = 0;
-
-    setInterval(() => {
-        notificationIcon.style.color = colors[colorIndex];
-        colorIndex = (colorIndex + 1) % colors.length;
-    }, 1000); // Changes color every second
-</script>
+    <!-- Fixed Footer with Buttons -->
+    <div class="footer">
+        <button class="rectangular-btn smg-task" onclick="window.location.href='SMGtask.html'">
+            SMG Task
+        </button>
+        <button class="rectangular-btn co-task" onclick="window.location.href='co-task.html'">
+            CO-TASK
+        </button>
+        <button class="rectangular-btn sponsored-task" onclick="window.location.href='sponsored.html'">
+            Sponsored
+        </button>
+    </div>
 
 </body>
 </html>
