@@ -54,6 +54,15 @@ ul {
 
 ul li {
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reward {
+    margin-left: 10px;
+    color: #ffcc00; /* Gold */
+    font-weight: bold;
 }
 
 #submit-request-btn, #submit-btn, #done-btn {
