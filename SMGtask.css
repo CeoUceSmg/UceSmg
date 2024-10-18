@@ -1,87 +1,133 @@
+/* General Styles */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: blue; /* Background color */
-    color: darkblue;
+    background-color: darkblue;
+    color: white;
+    overflow-y: scroll;
 }
 
 .container {
     padding: 20px;
 }
 
+/* Header */
 .header {
-    background-image: url('smgtask.jpg'); /* Background image for the header */
+    background-image: url('smgtask.jpg');
+    background-size: cover;
     text-align: center;
-    padding: 20px;
-    border-radius: 5px;
+    padding: 30px;
+    border-radius: 10px;
 }
 
 .header h1 {
-    margin: 0;
     font-size: 36px;
     font-weight: bold;
-    color: white; /* Header text color */
 }
 
+/* Divider Line */
 .divider {
-    border: 1px solid white; /* Horizontal line style */
+    height: 5px;
+    background-color: white;
     margin: 20px 0;
 }
 
-.task-list {
+/* Task Navigation */
+.task-navigation {
     display: flex;
-    flex-direction: column;
-    gap: 15px; /* Space between task items */
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.task-btn {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.task-btn:hover {
+    background-color: darkred;
+}
+
+/* Task Sections */
+.task-section {
+    display: none;
+    background: linear-gradient(45deg, red, blue);
+    padding: 20px;
+    border-radius: 10px;
+    animation: glow 2s infinite alternate;
+}
+
+.task-section:not(.hidden) {
+    display: block;
 }
 
 .task-item {
-    background: linear-gradient(45deg, red, darkblue); /* Background gradient for the task item */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    animation: glow 1.5s infinite alternate; /* Glow animation */
-    position: relative; /* Positioning for glow effect */
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
 }
 
-@keyframes glow {
-    0% {
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    }
-    100% {
-        box-shadow: 0 0 20px rgba(255, 255, 255, 1);
-    }
-}
-
-.task-title {
-    font-size: 24px;
+.join-link {
+    color: lightgreen;
+    text-decoration: none;
     font-weight: bold;
-    margin: 0 0 10px;
 }
 
-.task-reward {
-    font-size: 18px;
-    margin: 0 0 10px;
-}
-
-.join-button, .submit-button {
-    padding: 10px 20px;
-    margin-top: 10px;
+.submit-request {
+    background-color: orange;
+    color: white;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    padding: 10px;
     cursor: pointer;
+}
+
+.submit-request:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+.upload-form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-field,
+.upload-field {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.done-btn {
+    background-color: green;
     color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.join-button {
-    background-color: green; /* Color for join buttons */
-    text-decoration: none; /* No underline for links */
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
 }
 
-.submit-button {
-    background-color: orange; /* Color for submit buttons */
-}
-
-.submit-button:disabled {
-    background-color: gray; /* Color for disabled submit buttons */
+/* Glowing Effect */
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px white;
+    }
+    100% {
+        box-shadow: 0 0 20px cyan;
+    }
 }
