@@ -3,98 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMG Task List</title>
     <link rel="stylesheet" href="smgtask.css">
+    <title>SMG Task Page</title>
 </head>
 <body>
-    <header>
-        <h1>SMG Tasks</h1>
-    </header>
+    <div class="container">
+        <header class="header">
+            <h1>SMG Task</h1>
+        </header>
+        
+        <hr class="divider">
 
-    <main id="task-home">
         <div class="task-list">
-            <div class="task-item" onclick="showTask('whatsapp')">
-                Follow WhatsApp
+            <div class="task-item">
+                <div class="task-title">Follow our WhatsApp</div>
+                <div class="task-reward">Join + $SMG 200P</div>
+                <a href="https://chat.whatsapp.com/JpEkr5siL7NGTHjkma9ri1" class="join-button">Join</a>
+                <button class="submit-button" disabled>Submit Request</button>
             </div>
-            <div class="task-item" onclick="showTask('facebook')">
-                Follow Facebook
+
+            <div class="task-item">
+                <div class="task-title">Follow our Facebook</div>
+                <div class="task-reward">Join + $SMG 200P</div>
+                <a href="https://www.facebook.com/yourpage" class="join-button">Join</a>
+                <button class="submit-button" disabled>Submit Request</button>
             </div>
-            <div class="task-item" onclick="showTask('tiktok')">
-                Follow TikTok
+
+            <div class="task-item">
+                <div class="task-title">Follow our TikTok</div>
+                <div class="task-reward">Join + $SMG 200P</div>
+                <a href="https://www.tiktok.com/@yourpage" class="join-button">Join</a>
+                <button class="submit-button" disabled>Submit Request</button>
             </div>
-            <div class="task-item" onclick="showTask('instagram')">
-                Follow Instagram
+
+            <div class="task-item">
+                <div class="task-title">Follow our Instagram</div>
+                <div class="task-reward">Join + $SMG 200P</div>
+                <a href="https://www.instagram.com/yourpage" class="join-button">Join</a>
+                <button class="submit-button" disabled>Submit Request</button>
             </div>
-            <div class="task-item" onclick="showTask('youtube')">
-                Follow YouTube
+
+            <div class="task-item">
+                <div class="task-title">Follow our YouTube</div>
+                <div class="task-reward">Join + $SMG 200P</div>
+                <a href="https://www.youtube.com/c/yourpage" class="join-button">Join</a>
+                <button class="submit-button" disabled>Submit Request</button>
             </div>
         </div>
-    </main>
-
-    <section id="task-details" style="display: none;">
-        <button class="back-btn" onclick="goBack()">← Back</button>
-
-        <div id="whatsapp" class="task-section" style="display: none;">
-            <h2>WhatsApp Tasks</h2>
-            <ul>
-                <li>
-                    <div class="task-container">
-                        <span>Join main WhatsApp:</span>
-                        <a href="https://chat.whatsapp.com/JpEkr5siL7NGTHjkma9ri1" target="_blank" onclick="enableSubmit('task1')">Join</a> 
-                        <span class="reward">+ $SMG 200P</span>
-                        <button id="task1-submit" class="submit-btn" disabled>Submit Request</button>
-                    </div>
-                </li>
-                <li>
-                    <div class="task-container">
-                        <span>Join the community:</span>
-                        <a href="https://chat.whatsapp.com/EV65wqvR0SJ1e2QOdiQzW8" target="_blank" onclick="enableSubmit('task2')">Join</a> 
-                        <span class="reward">+ $SMG 200P</span>
-                        <button id="task2-submit" class="submit-btn" disabled>Submit Request</button>
-                    </div>
-                </li>
-                <li>
-                    <div class="task-container">
-                        <span>Join the conversation:</span>
-                        <a href="https://chat.whatsapp.com/KaqGVwROjyvJWGKQwtlsFS" target="_blank" onclick="enableSubmit('task3')">Join</a> 
-                        <span class="reward">+ $SMG 200P</span>
-                        <button id="task3-submit" class="submit-btn" disabled>Submit Request</button>
-                    </div>
-                </li>
-                <li>
-                    <div class="task-container">
-                        <span>Join the discussion:</span>
-                        <a href="https://chat.whatsapp.com/KtGeOAxhouXIzdqHtdLZ5R" target="_blank" onclick="enableSubmit('task4')">Join</a> 
-                        <span class="reward">+ $SMG 200P</span>
-                        <button id="task4-submit" class="submit-btn" disabled>Submit Request</button>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </section>
+    </div>
 
     <script>
-        let activeTask = '';
+        const joinButtons = document.querySelectorAll('.join-button');
+        const submitButtons = document.querySelectorAll('.submit-button');
 
-        function showTask(task) {
-            document.getElementById('task-home').style.display = 'none';
-            document.getElementById('task-details').style.display = 'block';
-            document.getElementById(task).style.display = 'block';
-            activeTask = task;
-        }
-
-        function goBack() {
-            document.getElementById('task-home').style.display = 'block';
-            document.getElementById('task-details').style.display = 'none';
-            document.getElementById(activeTask).style.display = 'none';
-            activeTask = '';
-        }
-
-        function enableSubmit(taskId) {
-            setTimeout(() => {
-                document.getElementById(`${taskId}-submit`).disabled = false;
-            }, 10000);
-        }
+        joinButtons.forEach((button, index) => {
+            button.addEventListener('click', function() {
+                // Enable the submit button after 10 seconds
+                setTimeout(() => {
+                    submitButtons[index].disabled = false;
+                }, 10000);
+            });
+        });
     </script>
 </body>
-                            </html>
+</html>
