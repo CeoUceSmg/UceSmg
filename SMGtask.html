@@ -26,40 +26,25 @@
             <h2>Follow WhatsApp</h2>
             <ul>
                 <li>
-                    Join main WhatsApp: 
-                    <a href="https://chat.whatsapp.com/JpEkr5siL7NGTHjkma9ri1" target="_blank">Join</a> 
-                    <span class="reward">+ $SMG 200P</span>
+                    <div class="task-container">
+                        <span>Join main WhatsApp:</span>
+                        <a href="https://chat.whatsapp.com/JpEkr5siL7NGTHjkma9ri1" 
+                           target="_blank" onclick="enableSubmit('task1')">Join</a> 
+                        <span class="reward">+ $SMG 200P</span>
+                        <button id="task1-submit" class="submit-btn" disabled>Submit Request</button>
+                    </div>
                 </li>
+
                 <li>
-                    Join the community: 
-                    <a href="https://chat.whatsapp.com/EV65wqvR0SJ1e2QOdiQzW8" target="_blank">Join</a> 
-                    <span class="reward">+ $SMG 200P</span>
-                </li>
-                <li>
-                    Join the conversation: 
-                    <a href="https://chat.whatsapp.com/KaqGVwROjyvJWGKQwtlsFS" target="_blank">Join</a> 
-                    <span class="reward">+ $SMG 200P</span>
-                </li>
-                <li>
-                    Join the conversation: 
-                    <a href="https://chat.whatsapp.com/KtGeOAxhouXIzdqHtdLZ5R" target="_blank">Join</a> 
-                    <span class="reward">+ $SMG 200P</span>
+                    <div class="task-container">
+                        <span>Join the community:</span>
+                        <a href="https://chat.whatsapp.com/EV65wqvR0SJ1e2QOdiQzW8" 
+                           target="_blank" onclick="enableSubmit('task2')">Join</a> 
+                        <span class="reward">+ $SMG 200P</span>
+                        <button id="task2-submit" class="submit-btn" disabled>Submit Request</button>
+                    </div>
                 </li>
             </ul>
-
-            <button id="submit-request-btn" disabled onclick="openSubmitField()">Submit Request</button>
-
-            <div id="submit-field" style="display: none;">
-                <label for="social-username">Social Username:</label>
-                <input type="text" id="social-username" placeholder="Enter your username">
-
-                <label for="task-receipt">Upload Task Receipt:</label>
-                <input type="file" id="task-receipt" accept="image/*">
-                <div id="uploaded-file-name" class="file-name"></div>
-
-                <button id="submit-btn" onclick="submitTask()">Submit</button>
-                <button id="done-btn" style="display: none;" onclick="markTaskDone()">Done</button>
-            </div>
         </div>
     </section>
 
@@ -71,11 +56,6 @@
             document.getElementById('task-details').style.display = 'block';
             document.getElementById(task).style.display = 'block';
             activeTask = task;
-
-            // Enable the submit request button after 10 seconds
-            setTimeout(() => {
-                document.getElementById('submit-request-btn').disabled = false;
-            }, 10000);
         }
 
         function goBack() {
@@ -85,42 +65,10 @@
             activeTask = '';
         }
 
-        function openSubmitField() {
-            document.getElementById('submit-field').style.display = 'block';
-        }
-
-        document.getElementById('task-receipt').addEventListener('change', function () {
-            const fileName = this.files[0].name;
-            document.getElementById('uploaded-file-name').textContent = fileName;
-            document.getElementById('submit-btn').disabled = false;
-        });
-
-        function submitTask() {
-            const username = document.getElementById('social-username').value;
-            const fileInput = document.getElementById('task-receipt').files[0];
-            const timeStamp = new Date().toLocaleString();
-
-            if (username && fileInput) {
-                const formData = new FormData();
-                formData.append('username', username);
-                formData.append('task', activeTask);
-                formData.append('receipt', fileInput);
-                formData.append('timestamp', timeStamp);
-
-                // Simulate sending data to request.html (Replace with actual AJAX call)
-                console.log('Task submitted:', formData);
-
-                alert('Task submitted successfully!');
-                document.getElementById('done-btn').style.display = 'block';
-            } else {
-                alert('Please complete all fields.');
-            }
-        }
-
-        function markTaskDone() {
-            document.getElementById('submit-field').style.display = 'none';
-            document.getElementById('submit-request-btn').disabled = true;
-            alert('Task marked as done.');
+        function enableSubmit(taskId) {
+            setTimeout(() => {
+                document.getElementById(`${taskId}-submit`).disabled = false;
+            }, 10000);
         }
     </script>
 </body>
