@@ -1,0 +1,70 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.content {
+    padding: 20px;
+    color: white;
+}
+
+/* Notification Icon */
+#notification-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Fixed Footer Styling */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+}
+
+/* Buttons */
+button {
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.2s ease;
+}
+
+/* Circular Button */
+.circular-btn {
+    background-color: red;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 40px;
+}
+
+/* Rectangular Buttons */
+.rectangular-btn {
+    background-color: blue;
+    border-radius: 5px;
+    flex: 1;
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+/* Lighting Animation */
+.lighting-effect {
+    animation: lighting 2s infinite;
+}
+
+@keyframes lighting {
+    0% { text-shadow: 0 0 5px white; }
+    50% { text-shadow: 0 0 20px white; }
+    100% { text-shadow: 0 0 5px white; }
+}
