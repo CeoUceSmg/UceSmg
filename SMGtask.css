@@ -3,9 +3,9 @@ body {
     margin: 0;
     padding: 0;
     background-color: #001f3f;
-    color: white;
     font-family: Arial, sans-serif;
-    overflow-y: scroll; /* Make the page scrollable */
+    color: white;
+    overflow-y: auto;
 }
 
 header {
@@ -15,69 +15,62 @@ header {
     text-align: center;
     padding: 50px;
     font-size: 2rem;
+    color: white;
 }
 
-main {
+.task-list {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-top: 30px;
+    gap: 20px;
+    padding: 30px;
 }
 
-.task-btn {
-    width: 80%;
-    padding: 15px;
-    background-color: #005f99;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.task-btn:hover {
-    background-color: #007bb5;
-}
-
-section {
+.task-item {
+    background: linear-gradient(90deg, #ff0000, #0000ff, #00ff00);
     padding: 20px;
-}
-
-.back-btn {
-    background-color: #005f99;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    text-align: center;
     cursor: pointer;
+    animation: glowing 1.5s infinite;
+    transition: transform 0.2s;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+.task-item:hover {
+    transform: scale(1.05);
+}
+
+@keyframes glowing {
+    0% { box-shadow: 0 0 5px #fff; }
+    50% { box-shadow: 0 0 20px #fff; }
+    100% { box-shadow: 0 0 5px #fff; }
+}
+
+.task-section {
+    padding: 20px;
 }
 
 .task-container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     background-color: #002d62;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
 .reward {
-    margin-left: 10px;
-    color: #ffcc00;
     font-weight: bold;
+    color: #ffcc00;
 }
 
 .submit-btn {
     background-color: #28a745;
     color: white;
     border: none;
-    padding: 8px 12px;
+    padding: 8px 15px;
     border-radius: 5px;
     cursor: not-allowed;
     transition: background-color 0.3s;
@@ -86,4 +79,14 @@ ul {
 .submit-btn:enabled {
     background-color: #007bb5;
     cursor: pointer;
-    }
+}
+
+.back-btn {
+    background-color: #005f99;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
