@@ -11,59 +11,83 @@
         <header class="header">
             <h1>SMG Task</h1>
         </header>
-        
+
         <hr class="divider">
 
-        <div class="task-list">
+        <!-- Task Navigation List -->
+        <div class="task-navigation">
+            <button class="task-btn" data-target="whatsapp">Follow WhatsApp</button>
+            <button class="task-btn" data-target="facebook">Follow Facebook</button>
+            <button class="task-btn" data-target="tiktok">Follow TikTok</button>
+            <button class="task-btn" data-target="instagram">Follow Instagram</button>
+            <button class="task-btn" data-target="youtube">Follow YouTube</button>
+        </div>
+
+        <!-- Task Sections -->
+        <div class="task-section" id="whatsapp">
+            <h2>WhatsApp Tasks</h2>
             <div class="task-item">
-                <div class="task-title">Follow our WhatsApp</div>
-                <div class="task-reward">Join + $SMG 200P</div>
-                <a href="https://chat.whatsapp.com/JpEkr5siL7NGTHjkma9ri1" class="join-button">Join</a>
-                <button class="submit-button" disabled>Submit Request</button>
+                <p>Join our main WhatsApp group:</p>
+                <a href="https://chat.whatsapp.com/JpEkr5siL7NGTHjkma9ri1" class="join-link">Join + $SMG 200P</a>
+                <button class="submit-request" disabled>Submit Request</button>
             </div>
 
             <div class="task-item">
-                <div class="task-title">Follow our Facebook</div>
-                <div class="task-reward">Join + $SMG 200P</div>
-                <a href="https://www.facebook.com/yourpage" class="join-button">Join</a>
-                <button class="submit-button" disabled>Submit Request</button>
+                <p>Join the community:</p>
+                <a href="https://chat.whatsapp.com/EV65wqvR0SJ1e2QOdiQzW8" class="join-link">Join + $SMG 200P</a>
+                <button class="submit-request" disabled>Submit Request</button>
             </div>
 
-            <div class="task-item">
-                <div class="task-title">Follow our TikTok</div>
-                <div class="task-reward">Join + $SMG 200P</div>
-                <a href="https://www.tiktok.com/@yourpage" class="join-button">Join</a>
-                <button class="submit-button" disabled>Submit Request</button>
+            <div class="upload-form hidden">
+                <input type="text" placeholder="Social Username" class="input-field">
+                <input type="file" class="upload-field">
+                <button class="done-btn" disabled>Done</button>
             </div>
+        </div>
 
-            <div class="task-item">
-                <div class="task-title">Follow our Instagram</div>
-                <div class="task-reward">Join + $SMG 200P</div>
-                <a href="https://www.instagram.com/yourpage" class="join-button">Join</a>
-                <button class="submit-button" disabled>Submit Request</button>
-            </div>
-
-            <div class="task-item">
-                <div class="task-title">Follow our YouTube</div>
-                <div class="task-reward">Join + $SMG 200P</div>
-                <a href="https://www.youtube.com/c/yourpage" class="join-button">Join</a>
-                <button class="submit-button" disabled>Submit Request</button>
-            </div>
+        <!-- Additional Task Sections (Facebook, TikTok, etc.) -->
+        <div class="task-section hidden" id="facebook">
+            <h2>Facebook Tasks</h2>
+            <p>Follow our Facebook page for updates.</p>
+            <!-- Add more tasks here -->
         </div>
     </div>
 
     <script>
-        const joinButtons = document.querySelectorAll('.join-button');
-        const submitButtons = document.querySelectorAll('.submit-button');
+        const taskButtons = document.querySelectorAll('.task-btn');
+        const sections = document.querySelectorAll('.task-section');
+        const joinLinks = document.querySelectorAll('.join-link');
+        const submitRequests = document.querySelectorAll('.submit-request');
+        const doneButtons = document.querySelectorAll('.done-btn');
 
-        joinButtons.forEach((button, index) => {
-            button.addEventListener('click', function() {
-                // Enable the submit button after 10 seconds
+        taskButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                sections.forEach(section => section.classList.add('hidden'));
+                document.getElementById(button.dataset.target).classList.remove('hidden');
+            });
+        });
+
+        joinLinks.forEach((link, index) => {
+            link.addEventListener('click', () => {
                 setTimeout(() => {
-                    submitButtons[index].disabled = false;
+                    submitRequests[index].disabled = false;
                 }, 10000);
+            });
+        });
+
+        submitRequests.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                const form = btn.nextElementSibling;
+                form.classList.remove('hidden');
+            });
+        });
+
+        doneButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.disabled = true;
+                button.closest('.task-item').classList.add('disabled');
             });
         });
     </script>
 </body>
-</html>
+            </html>
