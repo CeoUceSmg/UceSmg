@@ -1,15 +1,20 @@
+/* General Styles */
 body {
     margin: 0;
     padding: 0;
-    background-color: #001f3f; /* Dark Blue */
+    background-color: #001f3f;
     color: white;
     font-family: Arial, sans-serif;
+    overflow-y: scroll; /* Make the page scrollable */
 }
 
 header {
+    background-image: url('smgtask.jpg');
+    background-size: cover;
+    background-position: center;
     text-align: center;
-    padding: 20px;
-    background-color: #002d62;
+    padding: 50px;
+    font-size: 2rem;
 }
 
 main {
@@ -52,36 +57,33 @@ ul {
     padding: 0;
 }
 
-ul li {
-    margin-bottom: 10px;
+.task-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    background-color: #002d62;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .reward {
     margin-left: 10px;
-    color: #ffcc00; /* Gold */
+    color: #ffcc00;
     font-weight: bold;
 }
 
-#submit-request-btn, #submit-btn, #done-btn {
-    margin-top: 10px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #007bb5;
+.submit-btn {
+    background-color: #28a745;
     color: white;
-}
-
-#submit-request-btn:disabled {
-    background-color: gray;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
     cursor: not-allowed;
+    transition: background-color 0.3s;
 }
 
-.file-name {
-    margin-top: 5px;
-    font-size: 12px;
-    color: lightgray;
-}
+.submit-btn:enabled {
+    background-color: #007bb5;
+    cursor: pointer;
+    }
