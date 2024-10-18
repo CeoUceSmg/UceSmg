@@ -1,39 +1,129 @@
+Why is it not redirecting to admin.html
+After holding for 10secondes 
+
+Is the code not correct?
+Here is the code 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Page</title>
-    <link rel="stylesheet" href="task.css">
+    <title>SMG Homepage</title>
+    <link rel="stylesheet" href="SMG.css">
 </head>
 <body>
-    <header>
-        <h1>Task Dashboard</h1>
-        <div class="notification-icon">
-            <a href="tasknotification.html">
-                <img src="bell.png" alt="Notification Bell">
-            </a>
+
+<header>
+    <h1>Welcome to SMG</h1>
+     <p>Your gateway <span id="hidden-link">to</span> earning and learning.</p>
+    <h2>WHAT WE OFFER</h1>
+     
+</header>
+
+<div class="content">
+    <section class="section">
+        <h2>Available Tasks</h2>
+        <img src="available_task.jpg" alt="Available Tasks">
+        <p>The more tasks you perform, the more you earn.</p>
+        <div class="subsection">
+            <h3>SMG Task</h3>
+            <p>An official task available on the SMG task list, offering one of the highest pays.</p>
         </div>
-    </header>
+        <div class="subsection">
+            <h3>Co-task</h3>
+            <p>Here are available sponsored tasks that can make you rich with just your fingers.</p>
+        </div>
+    </section>
 
-    <main>
-        <section>
-            <p>Perform tasks and earn rewards!</p>
-        </section>
-    </main>
+    <section class="section">
+        <h2>Social Media Growth and Development</h2>
+        <img src="developer_hub.jpg" alt="Developer Hub">
+        <p>Having difficulties developing your social media page? Are you on social media but unsure how to generate income from it? You're on the right track!</p>
+        <h3>Get Started:</h3>
+        <img src="majoradvert.jpg" alt="Major Advert">
+        <p>Advertise with us today to promote your business, career, talent (e.g., music), and more.</p>
+    </section>
 
-    <footer>
-        <button class="task-btn smg-task" onclick="window.location.href='smgtask.html'">SMG Task</button>
-        <button class="task-btn co-task" onclick="window.location.href='co-task.html'">CO-TASK</button>
-        <button class="task-btn sponsored" onclick="window.location.href='sponsored.html'">Sponsored</button>
-    </footer>
+    <section class="section">
+        <h2>Real-Time Earning and Crypto Earning</h2>
+        <img src="crypto.jpg" alt="Crypto Earnings">
+        <p>Looking for a place to earn and learn about crypto? You've chosen the right place!</p>
+        <ul>
+            <li>Real-time crypto conversion and withdrawal.</li>
+            <li>Get unlimited crypto news and updates.</li>
+        </ul>
+    </section>
 
-    <script>
-        // Bell Icon Shaking Animation
-        const bellIcon = document.querySelector('.notification-icon img');
-        setInterval(() => {
-            bellIcon.classList.toggle('shake');
-        }, 1000);
+    <section class="section">
+        <h2>SMG Earnings, Task, and Withdrawal</h2>
+        <img src="withdrawal.jpg" alt="Withdrawal">
+        <p>We're happy to announce that SMG earning is now available!</p>
+        <ul>
+            <li>Earn free SMG coins.</li>
+            <li>Get SMG points by performing social tasks.</li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <h2>Referral System and Commission</h2>
+        <img src="commission.jpg" alt="Commission">
+        <ul>
+            <li>Earn extra commission points and coins.</li>
+            <li>Get commission for each friend's task performed.</li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <h2>Customer Care and Support</h2>
+        <img src="Customer_care.jpg" alt="Customer Care">
+        <p>Confused or facing challenges? Contact customer care or join the community for more information and updates.</p>
+    </section>
+
+    <section class="section">
+        <h2>Chat and Status</h2>
+        <img src="chat.jpg" alt="Chat">
+        <ul>
+            <li>Chat with friends.</li>
+            <li>Post status for public viewing.</li>
+            <li>Live chat with customers or users.</li>
+        </ul>
+    </section>
+</div>
+
+<footer>
+    <button class="task" onclick="window.location.href='task.html'">Task</button>
+    <button class="news" onclick="window.location.href='news.html'">News</button>
+    <button class="project" onclick="window.location.href='project.html'">Project</button>
+    <button class="help" onclick="window.location.href='help.html'">Help</button>
+    <button class="dashboard" onclick="window.location.href='dashboard.html'">Dashboard</button>
+</footer>
+     <script>
+  const hiddenLink = document.getElementById("hidden-link");
+  let holdTimer;
+
+  hiddenLink.addEventListener("mousedown", (event) => {
+    event.preventDefault(); // Prevent default behavior (optional)
+    holdTimer = setTimeout(() => {
+      window.location.href = "admin.html";
+    }, 10000); // 10 seconds
+  });
+
+  hiddenLink.addEventListener("touchstart", (event) => {
+    event.preventDefault(); // For mobile compatibility
+    holdTimer = setTimeout(() => {
+      window.location.href = "admin.html";
+    }, 10000); // 10 seconds
+  });
+
+  hiddenLink.addEventListener("mouseup", clearHoldTimer);
+  hiddenLink.addEventListener("touchend", clearHoldTimer);
+  hiddenLink.addEventListener("mouseout", clearHoldTimer);
+
+  function clearHoldTimer() {
+    clearTimeout(holdTimer); // Cancel if action is interrupted
+  }
+</script>
     </script>
+
 </body>
 </html>
