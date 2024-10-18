@@ -3,121 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMG Homepage</title>
-    <link rel="stylesheet" href="SMG.css">
+    <link rel="stylesheet" href="smgtask.css">
+    <title>SMG Task Page</title>
 </head>
 <body>
+    <div class="container">
+        <header class="header">
+            <h1>SMG Task</h1>
+        </header>
 
-<header>
-    <h1>Welcome to SMG</h1>
-     <p>Your gateway <span id="hidden-link">to</span> earning and learning.</p>
-    <h2>WHAT WE OFFER</h1>
-     
-</header>
+        <hr class="divider">
 
-<div class="content">
-    <section class="section">
-        <h2>Available Tasks</h2>
-        <img src="available_task.jpg" alt="Available Tasks">
-        <p>The more tasks you perform, the more you earn.</p>
-        <div class="subsection">
-            <h3>SMG Task</h3>
-            <p>An official task available on the SMG task list, offering one of the highest pays.</p>
+        <!-- Task Navigation List -->
+        <div class="task-navigation">
+            <button class="task-btn" data-target="whatsapp">Follow WhatsApp</button>
+            <button class="task-btn" data-target="facebook">Follow Facebook</button>
+            <button class="task-btn" data-target="tiktok">Follow TikTok</button>
+            <button class="task-btn" data-target="instagram">Follow Instagram</button>
+            <button class="task-btn" data-target="youtube">Follow YouTube</button>
         </div>
-        <div class="subsection">
-            <h3>Co-task</h3>
-            <p>Here are available sponsored tasks that can make you rich with just your fingers.</p>
+
+        <!-- Task Sections -->
+        <div class="task-section" id="whatsapp">
+            <h2>WhatsApp Tasks</h2>
+            <div class="task-item">
+                <p>Join our main WhatsApp group:</p>
+                <a href="https://chat.whatsapp.com/JpEkr5siL7NGTHjkma9ri1" class="join-link">Join + $SMG 200P</a>
+                <button class="submit-request" disabled>Submit Request</button>
+            </div>
+
+            <div class="task-item">
+                <p>Join the community:</p>
+                <a href="https://chat.whatsapp.com/EV65wqvR0SJ1e2QOdiQzW8" class="join-link">Join + $SMG 200P</a>
+                <button class="submit-request" disabled>Submit Request</button>
+            </div>
+
+            <div class="upload-form hidden">
+                <input type="text" placeholder="Social Username" class="input-field">
+                <input type="file" class="upload-field">
+                <button class="done-btn" disabled>Done</button>
+            </div>
         </div>
-    </section>
 
-    <section class="section">
-        <h2>Social Media Growth and Development</h2>
-        <img src="developer_hub.jpg" alt="Developer Hub">
-        <p>Having difficulties developing your social media page? Are you on social media but unsure how to generate income from it? You're on the right track!</p>
-        <h3>Get Started:</h3>
-        <img src="majoradvert.jpg" alt="Major Advert">
-        <p>Advertise with us today to promote your business, career, talent (e.g., music), and more.</p>
-    </section>
+        <!-- Additional Task Sections (Facebook, TikTok, etc.) -->
+        <div class="task-section hidden" id="facebook">
+            <h2>Facebook Tasks</h2>
+            <p>Follow our Facebook page for updates.</p>
+            <!-- Add more tasks here -->
+        </div>
+    </div>
 
-    <section class="section">
-        <h2>Real-Time Earning and Crypto Earning</h2>
-        <img src="crypto.jpg" alt="Crypto Earnings">
-        <p>Looking for a place to earn and learn about crypto? You've chosen the right place!</p>
-        <ul>
-            <li>Real-time crypto conversion and withdrawal.</li>
-            <li>Get unlimited crypto news and updates.</li>
-        </ul>
-    </section>
-
-    <section class="section">
-        <h2>SMG Earnings, Task, and Withdrawal</h2>
-        <img src="withdrawal.jpg" alt="Withdrawal">
-        <p>We're happy to announce that SMG earning is now available!</p>
-        <ul>
-            <li>Earn free SMG coins.</li>
-            <li>Get SMG points by performing social tasks.</li>
-        </ul>
-    </section>
-
-    <section class="section">
-        <h2>Referral System and Commission</h2>
-        <img src="commission.jpg" alt="Commission">
-        <ul>
-            <li>Earn extra commission points and coins.</li>
-            <li>Get commission for each friend's task performed.</li>
-        </ul>
-    </section>
-
-    <section class="section">
-        <h2>Customer Care and Support</h2>
-        <img src="Customer_care.jpg" alt="Customer Care">
-        <p>Confused or facing challenges? Contact customer care or join the community for more information and updates.</p>
-    </section>
-
-    <section class="section">
-        <h2>Chat and Status</h2>
-        <img src="chat.jpg" alt="Chat">
-        <ul>
-            <li>Chat with friends.</li>
-            <li>Post status for public viewing.</li>
-            <li>Live chat with customers or users.</li>
-        </ul>
-    </section>
-</div>
-
-<footer>
-    <button class="task" onclick="window.location.href='task.html'">Task</button>
-    <button class="news" onclick="window.location.href='news.html'">News</button>
-    <button class="project" onclick="window.location.href='project.html'">Project</button>
-    <button class="help" onclick="window.location.href='help.html'">Help</button>
-    <button class="dashboard" onclick="window.location.href='dashboard.html'">Dashboard</button>
-</footer>
     <script>
-  const hiddenLink = document.getElementById("hidden-link");
-  let holdTimer;
+        const taskButtons = document.querySelectorAll('.task-btn');
+        const sections = document.querySelectorAll('.task-section');
+        const joinLinks = document.querySelectorAll('.join-link');
+        const submitRequests = document.querySelectorAll('.submit-request');
+        const doneButtons = document.querySelectorAll('.done-btn');
 
-  hiddenLink.addEventListener("mousedown", (event) => {
-    event.preventDefault(); // Prevent default behavior (optional)
-    holdTimer = setTimeout(() => {
-      window.location.href = "admin.html";
-    }, 10000); // 10 seconds
-  });
+        taskButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                sections.forEach(section => section.classList.add('hidden'));
+                document.getElementById(button.dataset.target).classList.remove('hidden');
+            });
+        });
 
-  hiddenLink.addEventListener("touchstart", (event) => {
-    event.preventDefault(); // For mobile compatibility
-    holdTimer = setTimeout(() => {
-      window.location.href = "admin.html";
-    }, 10000); // 10 seconds
-  });
+        joinLinks.forEach((link, index) => {
+            link.addEventListener('click', () => {
+                setTimeout(() => {
+                    submitRequests[index].disabled = false;
+                }, 10000);
+            });
+        });
 
-  hiddenLink.addEventListener("mouseup", clearHoldTimer);
-  hiddenLink.addEventListener("touchend", clearHoldTimer);
-  hiddenLink.addEventListener("mouseout", clearHoldTimer);
+        submitRequests.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                const form = btn.nextElementSibling;
+                form.classList.remove('hidden');
+            });
+        });
 
-  function clearHoldTimer() {
-    clearTimeout(holdTimer); // Cancel if action is interrupted
-  }
+        doneButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.disabled = true;
+                button.closest('.task-item').classList.add('disabled');
+            });
+        });
     </script>
-}
 </body>
-</html>
+                    </html>
