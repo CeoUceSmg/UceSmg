@@ -1,0 +1,115 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #001f3f; /* Dark Blue Background */
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* Header Section */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #002d62;
+}
+
+h1 {
+    margin: 0;
+}
+
+/* Toggle Buttons */
+.toggle-buttons button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #005f99;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-buttons .active {
+    background-color: #0099cc;
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+    min-height: 80vh;
+}
+
+section {
+    display: none;
+}
+
+section.active {
+    display: block;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #004d73;
+    border-radius: 5px;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.verified {
+    background-color: green;
+}
+
+.pending {
+    background-color: orange;
+}
+
+/* Empty Message */
+.empty-message {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.bell-icon {
+    margin-right: 10px;
+    font-size: 24px;
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #001f3f;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer button {
+    border: none;
+    padding: 10px 20px;
+    background-color: #0099cc;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+footer button:hover {
+    background-color: #005f99;
+}
