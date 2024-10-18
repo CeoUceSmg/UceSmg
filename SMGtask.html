@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMG Tasks</title>
+    <title>SMG Task List</title>
     <link rel="stylesheet" href="smgtask.css">
 </head>
 <body>
@@ -12,36 +12,61 @@
     </header>
 
     <main id="task-home">
-        <button class="task-btn" onclick="showTask('whatsapp')">Follow WhatsApp</button>
-        <button class="task-btn" onclick="showTask('facebook')">Follow Facebook</button>
-        <button class="task-btn" onclick="showTask('tiktok')">Follow TikTok</button>
-        <button class="task-btn" onclick="showTask('instagram')">Follow Instagram</button>
-        <button class="task-btn" onclick="showTask('youtube')">Follow YouTube</button>
+        <div class="task-list">
+            <div class="task-item" onclick="showTask('whatsapp')">
+                Follow WhatsApp
+            </div>
+            <div class="task-item" onclick="showTask('facebook')">
+                Follow Facebook
+            </div>
+            <div class="task-item" onclick="showTask('tiktok')">
+                Follow TikTok
+            </div>
+            <div class="task-item" onclick="showTask('instagram')">
+                Follow Instagram
+            </div>
+            <div class="task-item" onclick="showTask('youtube')">
+                Follow YouTube
+            </div>
+        </div>
     </main>
 
     <section id="task-details" style="display: none;">
         <button class="back-btn" onclick="goBack()">← Back</button>
 
-        <div id="whatsapp" class="task-list" style="display: none;">
-            <h2>Follow WhatsApp</h2>
+        <div id="whatsapp" class="task-section" style="display: none;">
+            <h2>WhatsApp Tasks</h2>
             <ul>
                 <li>
                     <div class="task-container">
                         <span>Join main WhatsApp:</span>
-                        <a href="https://chat.whatsapp.com/JpEkr5siL7NGTHjkma9ri1" 
-                           target="_blank" onclick="enableSubmit('task1')">Join</a> 
+                        <a href="https://chat.whatsapp.com/JpEkr5siL7NGTHjkma9ri1" target="_blank" onclick="enableSubmit('task1')">Join</a> 
                         <span class="reward">+ $SMG 200P</span>
                         <button id="task1-submit" class="submit-btn" disabled>Submit Request</button>
                     </div>
                 </li>
-
                 <li>
                     <div class="task-container">
                         <span>Join the community:</span>
-                        <a href="https://chat.whatsapp.com/EV65wqvR0SJ1e2QOdiQzW8" 
-                           target="_blank" onclick="enableSubmit('task2')">Join</a> 
+                        <a href="https://chat.whatsapp.com/EV65wqvR0SJ1e2QOdiQzW8" target="_blank" onclick="enableSubmit('task2')">Join</a> 
                         <span class="reward">+ $SMG 200P</span>
                         <button id="task2-submit" class="submit-btn" disabled>Submit Request</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="task-container">
+                        <span>Join the conversation:</span>
+                        <a href="https://chat.whatsapp.com/KaqGVwROjyvJWGKQwtlsFS" target="_blank" onclick="enableSubmit('task3')">Join</a> 
+                        <span class="reward">+ $SMG 200P</span>
+                        <button id="task3-submit" class="submit-btn" disabled>Submit Request</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="task-container">
+                        <span>Join the discussion:</span>
+                        <a href="https://chat.whatsapp.com/KtGeOAxhouXIzdqHtdLZ5R" target="_blank" onclick="enableSubmit('task4')">Join</a> 
+                        <span class="reward">+ $SMG 200P</span>
+                        <button id="task4-submit" class="submit-btn" disabled>Submit Request</button>
                     </div>
                 </li>
             </ul>
@@ -72,4 +97,4 @@
         }
     </script>
 </body>
-    </html>
+                            </html>
