@@ -4,101 +4,212 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Request to Sign Up Now</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
-        /* General Styles */
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #74b9ff, #a29bfe);
-            margin: 0;
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh;
+            margin: 0;
         }
         .container {
             background-color: white;
             border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
             padding: 30px;
-            max-width: 400px;
-            width: 100%;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            color: #0984e3;
             text-align: center;
         }
-
-        h1 { color: #0984e3; font-size: 28px; margin-bottom: 10px; }
-        p { color: #636e72; margin-bottom: 20px; font-size: 14px; }
-
         input, select {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             margin: 10px 0;
             border: 2px solid #dfe6e9;
             border-radius: 8px;
         }
-
         input:focus, select:focus {
             border-color: #0984e3;
             outline: none;
         }
-
         .button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
             background: linear-gradient(45deg, #00b894, #00cec9);
             color: white;
-            padding: 12px;
             border: none;
             border-radius: 25px;
             cursor: pointer;
             font-size: 16px;
-            width: 100%;
-            margin-top: 15px;
-            transition: transform 0.3s, background 0.3s;
         }
-
         .button:disabled {
             background: gray;
             cursor: not-allowed;
         }
-
-        .error { color: #d63031; font-size: 14px; display: none; margin-top: -10px; text-align: left; }
-        .success { color: #00b894; font-size: 14px; display: none; }
+        .error {
+            color: #d63031;
+            font-size: 14px;
+            display: none;
+        }
+        .success {
+            color: #00b894;
+            font-size: 14px;
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Request to Sign Up Now</h1>
-        <p>Sign up to get started with our platform.</p>
-
         <form id="signupForm">
             <input type="text" id="name" placeholder="Full Name">
             <span class="error" id="nameError">Please enter your full name.</span>
 
-            <input type="text" id="username" placeholder="Username (Alphanumeric)">
-            <span class="error" id="usernameError">Invalid username or already taken.</span>
+            <input type="text" id="username" placeholder="Username">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request to Sign Up Now</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #74b9ff, #a29bfe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            color: #0984e3;
+            text-align: center;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #dfe6e9;
+            border-radius: 8px;
+        }
+        input:focus, select:focus {
+            border-color: #0984e3;
+            outline: none;
+        }
+        .button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:disabled {
+            background: gray;
+            cursor: not-allowed;
+        }
+        .error {
+            color: #d63031;
+            font-size: 14px;
+            display: none;
+        }
+        .success {
+            color: #00b894;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Request to Sign Up Now</h1>
+        <form id="signupForm">
+            <input type="text" id="name" placeholder="Full Name">
+            <span class="error" id="nameError">Please enter your full name.</span>
 
-            <input type="password" id="password" placeholder="Password (8+ characters)">
-            <span class="error" id="passwordError">Password must be at least 8 characters long.</span>
+            <input type="text" id="username" placeholder="Username">
+            <span class="error" id="usernameError">Username is already taken or invalid.</span>
 
-            <input type="password" id="confirm_password" placeholder="Retype Password">
+            <input type="password" id="password" placeholder="Password">
+            <span class="error" id="passwordError">Password must be at least 8 characters, with uppercase, lowercase, and numbers.</span>
+
+            <input type="password" id="confirm_password" placeholder="Confirm Password">
             <span class="error" id="confirmPasswordError">Passwords do not match.</span>
 
             <input type="email" id="email" placeholder="Email">
-            <span class="error" id="emailError">Please enter a valid email.</span>
+            <span class="error" id="emailError">Please enter a valid email address.</span>
 
-            <select id="countryCode">
-                <option value="+234">+234 Nigeria</option>
-                <option value="+1">+1 USA</option>
-                <option value="+44">+44 UK</option>
-                <option value="+91">+91 India</option>
+            <select id="countryCode" onchange="setPhoneLength()">
+                <!-- Full country code list -->
+                <option value="+1" data-length="11">+1 USA/Canada</option>
+<option value="+44" data-length="12">+44 UK</option>
+<option value="+91" data-length="12">+91 India</option>
+<option value="+81" data-length="11">+81 Japan</option>
+<option value="+86" data-length="13">+86 China</option>
+<option value="+49" data-length="12">+49 Germany</option>
+<option value="+234" data-length="13">+234 Nigeria</option>
+<option value="+61" data-length="11">+61 Australia</option>
+<option value="+33" data-length="12">+33 France</option>
+<option value="+39" data-length="12">+39 Italy</option>
+<option value="+7" data-length="11">+7 Russia</option>
+<option value="+55" data-length="13">+55 Brazil</option>
+<option value="+27" data-length="11">+27 South Africa</option>
+<option value="+82" data-length="12">+82 South Korea</option>
+<option value="+34" data-length="12">+34 Spain</option>
+<option value="+351" data-length="12">+351 Portugal</option>
+<option value="+60" data-length="11">+60 Malaysia</option>
+<option value="+62" data-length="12">+62 Indonesia</option>
+<option value="+63" data-length="12">+63 Philippines</option>
+<option value="+64" data-length="11">+64 New Zealand</option>
+<option value="+52" data-length="13">+52 Mexico</option>
+<option value="+31" data-length="12">+31 Netherlands</option>
+<option value="+32" data-length="12">+32 Belgium</option>
+<option value="+41" data-length="12">+41 Switzerland</option>
+<option value="+971" data-length="12">+971 UAE</option>
+<option value="+966" data-length="12">+966 Saudi Arabia</option>
+<option value="+20" data-length="12">+20 Egypt</option>
+<option value="+90" data-length="12">+90 Turkey</option>
+<option value="+94" data-length="12">+94 Sri Lanka</option>
+<option value="+46" data-length="12">+46 Sweden</option>
+<option value="+47" data-length="11">+47 Norway</option>
+<option value="+48" data-length="12">+48 Poland</option>
+<option value="+43" data-length="12">+43 Austria</option>
+<option value="+82" data-length="12">+82 South Korea</option>
+<option value="+64" data-length="11">+64 New Zealand</option>
+<option value="+358" data-length="12">+358 Finland</option>
+<option value="+30" data-length="12">+30 Greece</option>
+<option value="+57" data-length="12">+57 Colombia</option>
+<option value="+62" data-length="12">+62 Indonesia</option>
+<option value="+351" data-length="12">+351 Portugal</option>
+<option value="+34" data-length="12">+34 Spain</option>
+<option value="+61" data-length="11">+61 Australia</option>
+<option value="+64" data-length="11">+64 New Zealand</option>
+<option value="+55" data-length="13">+55 Brazil</option>
+<option value="+351" data-length="12">+351 Portugal</option>
             </select>
 
-            <input type="tel" id="phone" placeholder="Phone Number (e.g., 9049307270)">
-            <span class="error" id="phoneError">Phone number must be 11 digits including country code.</span>
+            <input type="tel" id="phone" placeholder="Phone Number (e.g., 9012345678)">
+            <span class="error" id="phoneError">Phone number must match the selected country code format.</span>
 
             <button type="button" class="button" id="verifyButton" onclick="verifyDetails()">Verify</button>
             <button type="submit" class="button" id="signUpButton" disabled>Sign Up</button>
         </form>
-
         <p class="success" id="successMessage">Details verified successfully!</p>
     </div>
 
@@ -106,6 +217,18 @@
         const verifyButton = document.getElementById('verifyButton');
         const signUpButton = document.getElementById('signUpButton');
 
+        // Function to set phone number length based on selected country code
+        function setPhoneLength() {
+            const countryCode = document.getElementById('countryCode').value;
+            const phoneInput = document.getElementById('phone');
+            const selectedOption = document.querySelector(`#countryCode option[value="${countryCode}"]`);
+            const length = selectedOption ? parseInt(selectedOption.getAttribute('data-length')) - countryCode.length : 10;
+            
+            phoneInput.maxLength = length; // Adjust max length of phone input field
+            phoneInput.placeholder = `Enter ${length} digits without country code`;
+        }
+
+        // Function to validate form details
         function verifyDetails() {
             const name = document.getElementById('name').value.trim();
             const username = document.getElementById('username').value.trim();
@@ -118,10 +241,10 @@
             const errors = {
                 name: name === "",
                 username: username === "" || localStorage.getItem(username),
-                password: password.length < 8,
+                password: !password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/),
                 confirmPassword: password !== confirmPassword,
                 email: !email.match(/^\S+@\S+\.\S+$/),
-                phone: !phone.match(/^\d{8}$/),
+                phone: !phone.match(/^\d{8,}$/) || phone.length !== (document.querySelector(`#countryCode option[value="${countryCode}"]`).getAttribute('data-length') - countryCode.length)
             };
 
             Object.keys(errors).forEach(id => {
@@ -136,4 +259,55 @@
         }
     </script>
 </body>
-</html>
+</html>￼Enter            <span class="error" id="usernameError">Username is already taken or invalid.</span>
+
+            <input type="password" id="password" placeholder="Password">
+            <span class="error" id="passwordError">Password must be at least 8 characters, with uppercase, lowercase, and numbers.</span>
+
+            <input type="password" id="confirm_password" placeholder="Confirm Password">
+            <span class="error" id="confirmPasswordError">Passwords do not match.</span>
+
+            <input type="email" id="email" placeholder="Email">
+            <span class="error" id="emailError">Please enter a valid email address.</span>
+
+            <select id="countryCode" onchange="setPhoneLength()">
+                <!-- Full country code list -->
+                <option value="+234" data-length="13">+234 Nigeria</option>
+                <option value="+1" data-length="11">+1 USA</option>
+                <option value="+44" data-length="12">+44 UK</option>
+                <option value="+91" data-length="12">+91 India</option>
+                <option value="+81" data-length="12">+81 Japan</option>
+                <option value="+86" data-length="13">+86 China</option>
+                <option value="+49" data-length="13">+49 Germany</option>
+                <!-- Add other country codes here -->
+            </select>
+
+            <input type="tel" id="phone" placeholder="Phone Number (e.g., 9012345678)">
+            <span class="error" id="phoneError">Phone number must match the selected country code format.</span>
+
+      <button type="button" class="button" id="verifyButton" onclick="verifyDetails()">Verify</button>
+            <button type="submit" class="button" id="signUpButton" disabled>Sign Up</button>
+        </form>
+        <p class="success" id="successMessage">Details verified successfully!</p>
+    </div>
+
+    <script>
+        const verifyButton = document.getElementById('verifyButton');
+        const signUpButton = document.getElementById('signUpButton');
+
+        // Function to set phone number length based on selected country code
+        function setPhoneLength() {
+            const countryCode = document.getElementById('countryCode').value;
+            const phoneInput = document.getElementById('phone');
+            const selectedOption = document.querySelector(`#countryCode option[value="${countryCode}"]`);
+            const length = selectedOption ? parseInt(selectedOption.getAttribute('data-length')) - countryCode.length : 10;
+            
+            phoneInput.maxLength = length; // Adjust max length of phone input field
+            phoneInput.placeholder = `Enter ${length} digits without country code`;
+        }
+
+        // Function to validate form details
+        function verifyDetails() {
+            const name = document.getElementById('name').value.trim();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
