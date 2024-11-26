@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="5EOTtKRlquJ1FV3hFIxSZVE7sfffZylk5C7RuMJaRTg" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Request to Sign Up Now</title>
@@ -25,35 +24,20 @@
             max-width: 400px;
             width: 100%;
             text-align: center;
-            animation: fadeIn 1s ease-in-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        h1 { color: #0984e3; font-size: 28px; margin-bottom: 10px; }
+        p { color: #636e72; margin-bottom: 20px; font-size: 14px; }
 
-        h1 {
-            color: #0984e3;
-            margin-bottom: 10px;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        p {
-            color: #636e72;
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-
-        input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+        input, select {
             width: 100%;
             padding: 12px;
             margin: 10px 0;
             border: 2px solid #dfe6e9;
             border-radius: 8px;
-            transition: border-color 0.3s;
         }
-        input:focus {
+
+        input:focus, select:focus {
             border-color: #0984e3;
             outline: none;
         }
@@ -61,7 +45,7 @@
         .button {
             background: linear-gradient(45deg, #00b894, #00cec9);
             color: white;
-            padding: 12px 20px;
+            padding: 12px;
             border: none;
             border-radius: 25px;
             cursor: pointer;
@@ -70,43 +54,14 @@
             margin-top: 15px;
             transition: transform 0.3s, background 0.3s;
         }
-        .button:hover {
-            background: linear-gradient(45deg, #00cec9, #00b894);
-            transform: scale(1.05);
+
+        .button:disabled {
+            background: gray;
+            cursor: not-allowed;
         }
 
-        .link {
-            color: #d63031;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .bottom-text {
-            margin-top: 15px;
-            color: #2d3436;
-            font-size: 14px;
-        }
-        .bottom-text a {
-            color: #0984e3;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .bottom-text a:hover {
-            text-decoration: underline;
-        }
-
-        .success-message, .error-message {
-            margin-top: 10px;
-            font-size: 14px;
-            font-weight: bold;
-            display: none;
-        }
-        .success-message {
-            color: #00b894;
-        }
-        .error-message {
-            color: #d63031;
-        }
+        .error { color: #d63031; font-size: 14px; display: none; margin-top: -10px; text-align: left; }
+        .success { color: #00b894; font-size: 14px; display: none; }
     </style>
 </head>
 <body>
@@ -114,70 +69,71 @@
         <h1>Request to Sign Up Now</h1>
         <p>Sign up to get started with our platform.</p>
 
-        <form id="signupForm" onsubmit="return false;">
-            <input type="text" id="name" placeholder="Full Name" required>
-            <input type="text" id="username" placeholder="Username (Alphanumeric)" required>
-            <input type="password" id="password" placeholder="Password (Letters and Numbers)" required>
-            <input type="password" id="confirm_password" placeholder="Retype Password" required>
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="tel" id="phone" placeholder="Phone Number" required>
+        <form id="signupForm">
+            <input type="text" id="name" placeholder="Full Name">
+            <span class="error" id="nameError">Please enter your full name.</span>
 
-            <p>
-                <input type="checkbox" required> I Agree to the 
-                <span class="link" onclick="window.open('terms_and_condition.htm', '_blank')">terms and conditions</span>
-            </p>
+            <input type="text" id="username" placeholder="Username (Alphanumeric)">
+            <span class="error" id="usernameError">Invalid username or already taken.</span>
 
-            <div id="message" class="success-message">Details verified successfully!</div>
-            <div id="error" class="error-message">Error: User already exists.</div>
+            <input type="password" id="password" placeholder="Password (8+ characters)">
+            <span class="error" id="passwordError">Password must be at least 8 characters long.</span>
 
-            <button type="button" class="button" onclick="verifyDetails()">Verify</button>
-            <button type="button" class="button" onclick="signUp()">Sign Up</button>
+            <input type="password" id="confirm_password" placeholder="Retype Password">
+            <span class="error" id="confirmPasswordError">Passwords do not match.</span>
+
+            <input type="email" id="email" placeholder="Email">
+            <span class="error" id="emailError">Please enter a valid email.</span>
+
+            <select id="countryCode">
+                <option value="+234">+234 Nigeria</option>
+                <option value="+1">+1 USA</option>
+                <option value="+44">+44 UK</option>
+                <option value="+91">+91 India</option>
+            </select>
+
+            <input type="tel" id="phone" placeholder="Phone Number (e.g., 9049307270)">
+            <span class="error" id="phoneError">Phone number must be 11 digits including country code.</span>
+
+            <button type="button" class="button" id="verifyButton" onclick="verifyDetails()">Verify</button>
+            <button type="submit" class="button" id="signUpButton" disabled>Sign Up</button>
         </form>
 
-        <div class="bottom-text">
-            <p>Already have an account? <a href="login.html">Login Now</a></p>
-        </div>
+        <p class="success" id="successMessage">Details verified successfully!</p>
     </div>
 
     <script>
+        const verifyButton = document.getElementById('verifyButton');
+        const signUpButton = document.getElementById('signUpButton');
+
         function verifyDetails() {
-            const username = document.getElementById('username').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message');
-            const error = document.getElementById('error');
-
-            const existingUser = JSON.parse(localStorage.getItem(username));
-
-            if (existingUser && existingUser.email === email) {
-                error.style.display = 'block';
-                message.style.display = 'none';
-            } else {
-                message.style.display = 'block';
-                error.style.display = 'none';
-            }
-        }
-
-        function signUp() {
+            const name = document.getElementById('name').value.trim();
+            const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirm_password').value;
+            const email = document.getElementById('email').value.trim();
+            const countryCode = document.getElementById('countryCode').value;
+            const phone = document.getElementById('phone').value.trim();
 
-            if (password !== confirmPassword) {
-                alert("Passwords do not match!");
-                return;
-            }
-
-            const userDetails = {
-                name: document.getElementById('name').value,
-                username: document.getElementById('username').value,
-                password: password,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
+            const errors = {
+                name: name === "",
+                username: username === "" || localStorage.getItem(username),
+                password: password.length < 8,
+                confirmPassword: password !== confirmPassword,
+                email: !email.match(/^\S+@\S+\.\S+$/),
+                phone: !phone.match(/^\d{8}$/),
             };
 
-            localStorage.setItem(userDetails.username, JSON.stringify(userDetails));
-            alert("Sign-up successful! Redirecting to login page.");
-            window.location.href = 'login.html';
+            Object.keys(errors).forEach(id => {
+                document.getElementById(id + 'Error').style.display = errors[id] ? 'block' : 'none';
+            });
+
+            if (Object.values(errors).some(error => error)) return;
+
+            localStorage.setItem(username, JSON.stringify({ name, username, email, phone: countryCode + phone }));
+            document.getElementById('successMessage').style.display = 'block';
+            signUpButton.disabled = false;
         }
     </script>
 </body>
-    </html>
+</html>
