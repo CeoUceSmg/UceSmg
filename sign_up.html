@@ -283,42 +283,50 @@
         }
 
         function verifyDetails() {
-            const name = document.getElementById('name').value.trim();
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm_password').value;
-            const email = document.getElementById('email').value.trim();
-            const countryCode = document.getElementById('countryCode').value;
-            const phone = document.getElementById('phone').value.trim();
+    const name = document.getElementById('name').value.trim();
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm_password').value;
+    const email = document.getElementById('email').value.trim();
+    const countryCode = document.getElementById('countryCode').value;
+    const phone = document.getElementById('phone').value.trim();
 
-            const errors = {
-                name: !name,
-                username: !username || localStorage.getItem(username),
-                password: !password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/),
-                confirmPassword: password !== confirmPassword,
-                email: !email.match(/^\S+@\S+\.\S+$/),
-                phone: phone.length !== parseInt(document.querySelector(`#countryCode option[value="${countryCode}"]`).getAttribute('data-length'))
-            };
+    const errors = {
+        name: !name,
+        username: !username || localStorage.getItem(username),
+        password: !password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/),
+        confirmPassword: password !== confirmPassword,
+        email: !email.match(/^\S+@\S+\.\S+$/),
+        phone: phone.length !== parseInt(document.querySelector(`#countryCode option[value="${countryCode}"]`).getAttribute('data-length'))
+    };
 
-            Object.keys(errors).forEach(id => {
-                document.getElementById(id + 'Error').style.display = errors[id] ? 'block' : 'none';
-            });
+    let isFormValid = true;
 
-            if (!Object.values(errors).some(error => error)) {
-                localStorage.setItem(username, JSON.stringify({ name, username, email, phone: countryCode + phone }));
-                document.getElementById('successMessage').style.display = 'block';
-                document.getElementById('signUpButton').disabled = false;
-            }
+    // Hide all error messages initially
+    document.querySelectorAll('.error').forEach(error => error.style.display = 'none');
+    
+    // Show errors for invalid inputs
+    Object.keys(errors).forEach(key => {
+        if (errors[key]) {
+            document.getElementById(`${key}Error`).style.display = 'inline';
+            isFormValid = false;
         }
-        
-     <div id="successMessage" style="display:none; color:green;">Sign-up successful! You can now log in.</div>
-    </script> 
-    document.getElementById('signupForm').addEventListener('submit', (event) => {
-    event.preventDefault();
+    });
 
-    const signUpButton = document.getElementById('signUpButton');
-    if (!signUpButton.disabled) {
-        window.location.href = 'login.html';
+    // If form is valid, enable the sign-up button and show success message
+    if (isFormValid) {
+        document.getElementById('signUpButton').disabled = false;
+        document.getElementById('successMessage').style.display = 'block';
+    } else {
+        document.getElementById('signUpButton').disabled = true;
+        document.getElementById('successMessage').style.display = 'none';
+    }
+}
+
+// Redirect to login.html after successful verification
+document.getElementById('signUpButton').addEventListener('click', function () {
+    if (!this.disabled) {
+        window.location.href = 'login.html';  // Redirect to login page
     }
 });
 </body>
