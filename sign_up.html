@@ -302,18 +302,17 @@
 
     let isFormValid = true;
 
-    // Hide all error messages initially
-    document.querySelectorAll('.error').forEach(error => error.style.display = 'none');
-    
-    // Show errors for invalid inputs
+    // Error handling
     Object.keys(errors).forEach(key => {
+        const errorElement = document.getElementById(`${key}Error`);
         if (errors[key]) {
-            document.getElementById(`${key}Error`).style.display = 'inline';
+            errorElement.style.display = 'block';
             isFormValid = false;
+        } else {
+            errorElement.style.display = 'none';
         }
     });
 
-    // If form is valid, enable the sign-up button and show success message
     if (isFormValid) {
         document.getElementById('signUpButton').disabled = false;
         document.getElementById('successMessage').style.display = 'block';
@@ -322,12 +321,5 @@
         document.getElementById('successMessage').style.display = 'none';
     }
 }
-
-// Redirect to login.html after successful verification
-document.getElementById('signUpButton').addEventListener('click', function () {
-    if (!this.disabled) {
-        window.location.href = 'login.html';  // Redirect to login page
-    }
-});
 </body>
 </html>
