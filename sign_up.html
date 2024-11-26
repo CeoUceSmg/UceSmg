@@ -310,6 +310,16 @@
                 document.getElementById('signUpButton').disabled = false;
             }
         }
-    </script>
+        
+     <div id="successMessage" style="display:none; color:green;">Sign-up successful! You can now log in.</div>
+    </script> 
+    document.getElementById('signupForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const signUpButton = document.getElementById('signUpButton');
+    if (!signUpButton.disabled) {
+        window.location.href = 'login.html';
+    }
+});
 </body>
 </html>
