@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXIT PAGE</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:active {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Admin Login</h2>
+        <form id="adminLoginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter Username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter Password" required>
+            </div>
+            <div class="form-group">
+                <label for="loginCode">Login Code</label>
+                <input type="text" id="loginCode" placeholder="Enter Login Code" required>
+            </div>
+            <div class="form-group">
+                <label for="note">Note</label>
+                <input type="text" id="note" placeholder="Enter Note" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="number" id="date" placeholder="Enter Date" required>
+            </div>
+            <button type="button" id="exitButton">Exit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("exitButton").addEventListener("mousedown", function() {
+            let holdTime = 0;
+            const interval = setInterval(() => {
+                holdTime++;
+                if (holdTime >= 20) {
+                    clearInterval(interval);
+                    validateAdminLogin();
+                }
+            }, 1000);
+
+            this.addEventListener("mouseup", () => {
+                clearInterval(interval);
+            });
+
+            this.addEventListener("mouseleave", () => {
+                clearInterval(interval);
+            });
+        });
+
+        function validateAdminLogin() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const loginCode = document.getElementById("loginCode").value;
+            const note = document.getElementById("note").value;
+            const date = document.getElementById("date").value;
+
+            if (
+                username === "CEOUCESMG OFFICIAL" &&
+                password === "ADUCE8tgw5ejh2s9ndk1afg6ryw4re7kg3nd0alkfjhdflkjahsgdkjhfklajhfdklajhf" &&
+                loginCode === "ADUCE PASS8tgw5ejh2s9ndk1afg6ryw4re7kg3nd0alkfjh4sdf2lkhg7d6f5gfdsjklpoiuytrewqazxswedcvbnmkoijhgfd" &&
+                note === "TANAJOHN" &&
+                date === "13190800"
+            ) {
+                window.location.href = "admin.html";
+            } else {
+                window.close();
+            }
+        }
+    </script>
+</body>
+</html>
