@@ -65,7 +65,24 @@
             text-align: center;
             display: none;
         }
-    </style>
+        <button id="loginButton" onclick="redirectToLogin()">Login</button>
+        <style>
+    #loginButton {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: blue;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 14px;
+        border-radius: 5px;
+    }
+    #loginButton:hover {
+        background-color: darkblue;
+    }
+  <style>
 </head>
 <body>
     <div class="container">
@@ -274,6 +291,11 @@
     </div>
 
     <script>
+        <script>
+    function redirectToLogin() {
+        window.location.href = 'login.html';
+    }
+</script>
         function redirectToLogin() {
     const signUpButton = document.getElementById('signUpButton');
     if (!signUpButton.disabled) {
