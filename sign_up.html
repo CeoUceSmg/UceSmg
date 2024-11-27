@@ -268,11 +268,17 @@
 
             <button type="button" class="button" id="verifyButton" onclick="verifyDetails()">Verify</button>
             <button type="submit" class="button" id="signUpButton" disabled>Sign Up</button>
+            <button id="signUpButton" disabled onclick="redirectToLogin()">Sign Up</button>
         </form>
         <p class="success" id="successMessage">Details verified successfully!</p>
     </div>
 
     <script>
+        function redirectToLogin() {
+    if (!document.getElementById('signUpButton').disabled) {
+        window.location.href = 'login.html';
+    }
+        } 
         function setPhoneLength() {
             const countryCode = document.getElementById('countryCode').value;
             const phoneInput = document.getElementById('phone');
