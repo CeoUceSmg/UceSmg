@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -287,52 +287,50 @@
            
         </form>
         <p class="success" id="successMessage">Details verified successfully!</p>
-    </div>
-</script>
-
-    function redirectToLogin() {
-        window.location.href = 'login.html';
-    }
+    /div>
+    <script>
         function redirectToLogin() {
-    const signUpButton = document.getElementById('signUpButton');
-    if (!signUpButton.disabled) {
-        window.location.href = 'login.html'; // Redirects to the login page
-    }
-}
+            window.location.href = 'login.html';
+        }
 
-function verifyDetails() {
-    const name = document.getElementById('name').value.trim();
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirm_password').value;
-    const email = document.getElementById('email').value.trim();
-    const countryCode = document.getElementById('countryCode').value;
-    const phone = document.getElementById('phone').value.trim();
+        function verifyDetails() {
+            const name = document.getElementById('name').value.trim();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
 
-    const errors = {
-        name: !name,
-        username: !username || localStorage.getItem(username),
-        password: !password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/),
-        confirmPassword: password !== confirmPassword,
-        email: !email.match(/^\S+@\S+\.\S+$/),
-        phone: phone.length !== parseInt(document.querySelector(`#countryCode option[value="${countryCode}"]`).getAttribute('data-length'))
-    };
+            // Validate inputs
+            let isValid = true;
 
-    Object.keys(errors).forEach(id => {
-        document.getElementById(id + 'Error').style.display = errors[id] ? 'block' : 'none';
-    });
+            document.getElementById('nameError').style.display = name ? 'none' : 'block';
+            isValid = isValid && name;
 
-    if (!Object.values(errors).some(error => error)) {
-        localStorage.setItem(
-            username,
-            JSON.stringify({ name, username, email, phone: countryCode + phone })
-        );
-        document.getElementById('successMessage').style.display = 'block';
-        document.getElementById('signUpButton').disabled = false; // Enables the Sign Up button
-    } else {
-        document.getElementById('signUpButton').disabled = true; // Disables the button if errors exist
-    }
-}
+            document.getElementById('usernameError').style.display = username && !localStorage.getItem(username) ? 'none' : 'block';
+            isValid = isValid && username && !localStorage.getItem(username);
+
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+            document.getElementById('passwordError').style.display = passwordRegex.test(password) ? 'none' : 'block';
+            isValid = isValid && passwordRegex.test(password);
+
+            document.getElementById('confirmPasswordError').style.display = password === confirmPassword ? 'none' : 'block';
+            isValid = isValid && password === confirmPassword;
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            document.getElementById('emailError').style.display = emailRegex.test(email) ? 'none' : 'block';
+            isValid = isValid && emailRegex.test(email);
+
+            document.getElementById('phoneError').style.display = phone ? 'none' : 'block';
+            isValid = isValid && phone;
+
+            if (isValid) {
+                document.getElementById('successMessage').style.display = 'block';
+                localStorage.setItem(username, JSON.stringify({ name, email, phone, password }));
+                document.getElementById('signUpButton').disabled = false;
+            }
+        }
     </script>
 </body>
 </html>
+
