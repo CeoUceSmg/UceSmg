@@ -267,7 +267,7 @@
             <span class="error" id="phoneError">Phone number must match the selected country code format.</span>
 
             <button type="button" class="button" id="verifyButton" onclick="verifyDetails()">Verify</button>
-            <button type="submit" class="button" id="signUpButton" disabled onclick="redirectToLogin()">Sign Up</button>
+            <button type="button" class="button" id="signUpButton" disabled onclick="redirectToLogin()">Sign Up</button>
            
         </form>
         <p class="success" id="successMessage">Details verified successfully!</p>
@@ -275,47 +275,45 @@
 
     <script>
         function redirectToLogin() {
-    if (!document.getElementById('signUpButton').disabled) {
-        window.location.href = 'login.html';
+    const signUpButton = document.getElementById('signUpButton');
+    if (!signUpButton.disabled) {
+        window.location.href = 'login.html'; // Redirects to the login page
     }
-        } 
-        function setPhoneLength() {
-            const countryCode = document.getElementById('countryCode').value;
-            const phoneInput = document.getElementById('phone');
-            const selectedOption = document.querySelector(`#countryCode option[value="${countryCode}"]`);
-            const length = selectedOption ? parseInt(selectedOption.getAttribute('data-length')) : 10;
-            phoneInput.maxLength = length;
-            phoneInput.placeholder = `Enter ${length} digits`;
-        }
+}
 
-        function verifyDetails() {
-            const name = document.getElementById('name').value.trim();
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm_password').value;
-            const email = document.getElementById('email').value.trim();
-            const countryCode = document.getElementById('countryCode').value;
-            const phone = document.getElementById('phone').value.trim();
+function verifyDetails() {
+    const name = document.getElementById('name').value.trim();
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm_password').value;
+    const email = document.getElementById('email').value.trim();
+    const countryCode = document.getElementById('countryCode').value;
+    const phone = document.getElementById('phone').value.trim();
 
-            const errors = {
-                name: !name,
-                username: !username || localStorage.getItem(username),
-                password: !password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/),
-                confirmPassword: password !== confirmPassword,
-                email: !email.match(/^\S+@\S+\.\S+$/),
-                phone: phone.length !== parseInt(document.querySelector(`#countryCode option[value="${countryCode}"]`).getAttribute('data-length'))
-            };
+    const errors = {
+        name: !name,
+        username: !username || localStorage.getItem(username),
+        password: !password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/),
+        confirmPassword: password !== confirmPassword,
+        email: !email.match(/^\S+@\S+\.\S+$/),
+        phone: phone.length !== parseInt(document.querySelector(`#countryCode option[value="${countryCode}"]`).getAttribute('data-length'))
+    };
 
-            Object.keys(errors).forEach(id => {
-                document.getElementById(id + 'Error').style.display = errors[id] ? 'block' : 'none';
-            });
+    Object.keys(errors).forEach(id => {
+        document.getElementById(id + 'Error').style.display = errors[id] ? 'block' : 'none';
+    });
 
-            if (!Object.values(errors).some(error => error)) {
-                localStorage.setItem(username, JSON.stringify({ name, username, email, phone: countryCode + phone }));
-                document.getElementById('successMessage').style.display = 'block';
-                document.getElementById('signUpButton').disabled = false;
-            }
-        }
+    if (!Object.values(errors).some(error => error)) {
+        localStorage.setItem(
+            username,
+            JSON.stringify({ name, username, email, phone: countryCode + phone })
+        );
+        document.getElementById('successMessage').style.display = 'block';
+        document.getElementById('signUpButton').disabled = false; // Enables the Sign Up button
+    } else {
+        document.getElementById('signUpButton').disabled = true; // Disables the button if errors exist
+    }
+}
     </script>
 </body>
 </html>
