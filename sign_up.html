@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -65,26 +65,25 @@
             text-align: center;
             display: none;
         }
-        <button id="loginButton" onclick="redirectToLogin()">Login</button>
-        <style>
-    #loginButton {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: blue;
-        color: white;
-        border: none;
-        padding: 10px 15px;
-        cursor: pointer;
-        font-size: 14px;
-        border-radius: 5px;
-    }
-    #loginButton:hover {
-        background-color: darkblue;
-    }
-  <style>
+        #loginButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+        #loginButton:hover {
+            background-color: darkblue;
+        }
+    </style>
 </head>
 <body>
+    <button id="loginButton" onclick="redirectToLogin()">Login</button>
     <div class="container">
         <h1>Request to Sign Up Now</h1>
         <form id="signupForm">
@@ -290,12 +289,9 @@
         <p class="success" id="successMessage">Details verified successfully!</p>
     </div>
 
-    <script>
-        <script>
     function redirectToLogin() {
         window.location.href = 'login.html';
     }
-</script>
         function redirectToLogin() {
     const signUpButton = document.getElementById('signUpButton');
     if (!signUpButton.disabled) {
