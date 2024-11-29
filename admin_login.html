@@ -60,7 +60,7 @@
 </head>
 <body>
     <div class="login-container">
-        <h2>check you password and exit</h2>
+        <h2>Check Your Password and Exit</h2>
         <form id="adminLoginForm">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -87,24 +87,27 @@
     </div>
 
     <script>
-        document.getElementById("exitButton").addEventListener("mousedown", function() {
-            let holdTime = 0;
-            const interval = setInterval(() => {
-                holdTime++;
-                if (holdTime >= 20) {
-                    clearInterval(interval);
-                    validateAdminLogin();
-                }
-            }, 1000);
+        const exitButton = document.getElementById("exitButton");
+        let holdTimer = null;
 
-            this.addEventListener("mouseup", () => {
-                clearInterval(interval);
-            });
+        exitButton.addEventListener("mousedown", startHold);
+        exitButton.addEventListener("touchstart", startHold);
 
-            this.addEventListener("mouseleave", () => {
-                clearInterval(interval);
-            });
-        });
+        exitButton.addEventListener("mouseup", clearHold);
+        exitButton.addEventListener("touchend", clearHold);
+        exitButton.addEventListener("mouseleave", clearHold);
+
+        function startHold(event) {
+            event.preventDefault(); // Prevent unintended behavior
+            holdTimer = setTimeout(() => {
+                validateAdminLogin();
+            }, 20000); // 20 seconds
+        }
+
+        function clearHold() {
+            clearTimeout(holdTimer);
+            holdTimer = null;
+        }
 
         function validateAdminLogin() {
             const username = document.getElementById("username").value;
@@ -122,7 +125,10 @@
             ) {
                 window.location.href = "admin.html";
             } else {
-                window.close();
+                alert("Invalid credentials. The window will now close.");
+                setTimeout(() => {
+                    window.close(); // Only works if the page is opened via JavaScript
+                }, 500);
             }
         }
     </script>
