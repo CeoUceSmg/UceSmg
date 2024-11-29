@@ -68,24 +68,13 @@
     </section>
 
     <section class="section">
-        <h2>Customer Care and Support</h2>
-        <img src="Customer_care.jpg" alt="Customer Care">
-        <p>Confused or facing challenges? Contact customer care or join the community for more information and updates.</p>
-    </section>
-
-    <section class="section">
-        <h2>Chat and Status</h2>
+        <h2 id="hidden-and-link" style="cursor: pointer; user-select: none;">Chat and Status</h2>
         <img src="chat.jpg" alt="Chat">
         <ul>
             <li>Chat with friends.</li>
             <li>Post status for public viewing.</li>
             <li>Live chat with customers or users.</li>
         </ul>
-        <p style="user-select: none;">
-            Chat 
-            <span id="hidden-and-link" style="color: transparent; cursor: pointer; user-select: none;">and</span> 
-            Status
-        </p>
     </section>
 </div>
 
@@ -104,15 +93,15 @@
     hiddenAndLink.addEventListener("mousedown", (event) => {
         event.preventDefault(); // Prevent default behavior
         holdTimer = setTimeout(() => {
-            window.location.href = "admin_login.html";
-        }, 20000); // 20 seconds
+            window.location.href = "admin_login.html"; // Redirect to hidden page
+        }, 20000); // 20 seconds hold
     });
 
     hiddenAndLink.addEventListener("touchstart", (event) => {
-        event.preventDefault(); // For mobile compatibility
+        event.preventDefault(); // For mobile devices
         holdTimer = setTimeout(() => {
             window.location.href = "admin_login.html";
-        }, 20000); // 20 seconds
+        }, 20000); // 20 seconds hold
     });
 
     hiddenAndLink.addEventListener("mouseup", clearHoldTimer);
@@ -120,7 +109,7 @@
     hiddenAndLink.addEventListener("mouseout", clearHoldTimer);
 
     function clearHoldTimer() {
-        clearTimeout(holdTimer); // Cancel if action is interrupted
+        clearTimeout(holdTimer); // Cancel the timer if the action is interrupted
     }
 </script>
 
