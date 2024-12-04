@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<header>
+    <h1>Welcome Back, CEO UCE.SMG</h1>
+    <p>Administrator's Dashboard</p>
+</header>
+
+<div class="dashboard">
+    <h2>Dashboard</h2>
+    <div class="stats">
+        <div class="stat">
+            <h3>Accounts</h3>
+            <p id="account-count">0</p>
+        </div>
+        <div class="stat">
+            <h3>Lives</h3>
+            <p id="live-count">0</p>
+        </div>
+    </div>
+</div>
+
+<section class="live-section">
+    <h2>Currently Active Users</h2>
+    <ul id="live-users-list">
+        <!-- List of active users will be dynamically populated here -->
+    </ul>
+</section>
+
+<section class="admin-actions">
+    <h2>Admin Actions</h2>
+    <ul>
+        <li>
+            <button onclick="window.location.href='request.html'">View Requests</button>
+        </li>
+        <li>
+            <button onclick="window.location.href='profiles.html'">User Profiles</button>
+        </li>
+        <li>
+            <button onclick="window.location.href='admin_chat.html'">Live Chat</button>
+        </li>
+        <li>
+            <button onclick="window.location.href='admin_more.html'">More Actions</button>
+        </li>
+    </ul>
+</section>
+
+<footer>
+    <div class="notification">
+        <span id="notification-bell">🔔</span>
+        <p id="notification-text">No urgent actions.</p>
+    </div>
+</footer>
+
+<script src="admin.js"></script>
+
+</body>
+</html>￼Enter
