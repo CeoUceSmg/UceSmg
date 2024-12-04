@@ -1,49 +1,43 @@
-// Simulated database of users
+// Simulated user database
 const users = [
     { id: 1, name: "John Doe", profileImg: "john.jpg", live: true },
     { id: 2, name: "Jane Smith", profileImg: "jane.jpg", live: false },
     { id: 3, name: "Alice Brown", profileImg: "alice.jpg", live: true },
 ];
 
-// Update account and live user counts
+// Update the dashboard stats
 function updateDashboard() {
-    const accountCount = users.length;
-    const liveCount = users.filter(user => user.live).length;
-
-    document.getElementById("account-count").textContent = accountCount;
-    document.getElementById("live-count").textContent = liveCount;
+    document.getElementById("account-count").textContent = users.length;
+    document.getElementById("live-count").textContent = users.filter(user => user.live).length;
 }
 
-// Populate the live user list
+// Populate the active users modal
 function populateLiveUsers() {
     const liveUsersList = document.getElementById("live-users-list");
-    liveUsersList.innerHTML = ""; // Clear existing list
+    liveUsersList.innerHTML = "";
 
-    users
-        .filter(user => user.live)
-        .forEach(user => {
-            const li = document.createElement("li");
-            li.textContent = user.name;
-            li.style.backgroundImage = `url(${user.profileImg})`;
-            li.style.backgroundSize = "cover";
-            li.addEventListener("click", () => openUserProfile(user.id));
-            liveUsersList.appendChild(li);
-        });
+    users.filter(user => user.live).forEach(user => {
+        const li = document.createElement("li");
+        li.textContent = user.name;
+        li.addEventListener("click", () => openUserProfile(user.id));
+        liveUsersList.appendChild(li);
+    });
 }
 
-// Open user profile (simulated functionality)
+// Open user profile (simulation)
 function openUserProfile(userId) {
-    alert(`Open user profile for User ID: ${userId}`);
+    alert(`Opening profile for User ID: ${userId}`);
 }
 
-// Simulate new user notification
-function showNewUserNotification(user) {
-    const notificationText = document.getElementById("notification-text");
-    notificationText.textContent = `${user.name} just created an account!`;
-}
+// Modal functionality
+document.getElementById("view-live-users").addEventListener("click", () => {
+    document.getElementById("live-users-modal").classList.remove("hidden");
+    populateLiveUsers();
+});
+
+document.getElementById("close-modal").addEventListener("click", () => {
+    document.getElementById("live-users-modal").classList.add("hidden");
+});
 
 // Initial setup
-document.addEventListener("DOMContentLoaded", () => {
-    updateDashboard();
-    populateLiveUsers();
-});￼Enter
+document.addEventListener("DOMContentLoaded", updateDashboard);
